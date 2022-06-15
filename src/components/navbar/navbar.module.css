@@ -1,0 +1,24 @@
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 120px;
+  border-bottom: 0.1rem solid burlywood;
+  background-color: aliceblue;
+}
+
+.logo {
+  height: 3.8rem;
+  margin-left: 3.5rem;
+}
+
+.subscribe_para {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.19rem;
+  background-color: black;
+  color: white;
+}

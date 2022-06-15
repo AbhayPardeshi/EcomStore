@@ -1,0 +1,11 @@
+.action_links {
+  display: flex;
+  justify-content: space-around;
+  /* margin-left: 1.2rem; */
+}
+
+.action_links a {
+  color: #b1b1b3;
+  font-size: 1.75rem;
+  margin: 0rem 1.3rem;
+}
