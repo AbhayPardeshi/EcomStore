@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  padding: 2rem 3rem;
+}
+
+.maison_article_div {
+  position: relative;
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.maison_article_div::before {
+  background-image: url(../../../public/assets/images/maison-article-image.webp);
+  background-size: cover;
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.maison_article_div > span {
+  font-size: 5.5rem;
+}
+
+.sacre_div {
+  position: relative;
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  flex-direction: column;
+}
+
+.sacre_div::before {
+  background-image: url(../../../public/assets/images/sacre-image.webp);
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.sacre_div > h1 {
+  font-size: 5.5rem;
+  margin: 0;
+}
+
+.btn {
+  font-size: 1.25rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  border-color: transparent;
+  color: white;
+  background: #222;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin-top: 1rem;
+}
+.btn:hover {
+  color: #222;
+  background: white;
+  /* border: #222 solid 0.1em; */
+}

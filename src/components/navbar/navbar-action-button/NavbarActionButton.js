@@ -8,16 +8,16 @@ import styles from "./navbar-action-button.module.css";
 export const NavbarActionButton = () => {
   return (
     <div className={styles.action_links}>
-      <a href="">
+      <a href="#">
         <GoLocation />
       </a>
-      <a href="">
+      <a href="#">
         <FaRegUser />
       </a>
-      <a href="">
+      <a href="#">
         <FaCartPlus />
       </a>
-      <a href="">
+      <a href="#">
         <BsSearch />
       </a>
     </div>

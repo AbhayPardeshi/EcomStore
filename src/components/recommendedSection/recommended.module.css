@@ -1,0 +1,53 @@
+#heading {
+  font-size: 2.5rem;
+}
+
+.recommend_div p {
+  text-align: center;
+  position: relative;
+}
+
+.shoe_section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0rem 3rem;
+  row-gap: 1.5rem;
+  column-gap: 0.6rem;
+}
+
+.shoe_section img {
+  max-width: 285px;
+  min-height: 200px;
+}
+
+.shoe_section a {
+  text-decoration: none;
+}
+.shoe_info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.shoe_info p {
+  margin: 0;
+
+  text-align: start;
+}
+
+.price {
+  margin-right: 1rem;
+  color: black;
+  font-size: 0.8rem;
+}
+
+.shoe_name {
+  color: black;
+  padding-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.pale_color_heading {
+  color: #d3c6c6;
+  font-size: 0.8rem;
+}

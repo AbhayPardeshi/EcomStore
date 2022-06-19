@@ -1,0 +1,58 @@
+#heading {
+  font-size: 2.5rem;
+}
+
+.trendingItems_div p {
+  text-align: center;
+  position: relative;
+}
+
+.trendingItems_section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0rem 3rem;
+  column-gap: 0.6rem;
+  row-gap: 1.5rem;
+}
+
+.trendingItems_section img {
+  width: 280px;
+  /* min-height: 200px; */
+  height: 250px;
+}
+
+.trendingItems_section a {
+  text-decoration: none;
+}
+
+.trendingItem_info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trendingItem_info p {
+  margin: 0;
+  text-align: start;
+}
+
+.trendingItem_original_price {
+  text-decoration: line-through;
+}
+
+.trendingItem_price {
+  margin-right: 1rem;
+  color: black;
+  font-size: 0.8rem;
+}
+
+.trendingItem_name {
+  color: black;
+  padding-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.pale_color_heading {
+  color: #d3c6c6;
+  font-size: 0.8rem;
+}
