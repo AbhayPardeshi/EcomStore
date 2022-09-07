@@ -4,8 +4,7 @@
   color: white;
   background-color: black;
   margin: 0;
-  height: 60vh;
-  padding-top: 5rem;
+  padding: 5rem 4rem 0rem 4rem;
 }
 
 .footer_div1 a {
@@ -16,8 +15,15 @@
 
 .footer_div1 {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
+  height: auto;
+}
+
+.footer_div1 ul {
+  list-style: none;
+  padding: 0;
 }
 
 .footer_link {
@@ -26,7 +32,6 @@
 
 .footer_payment_div {
   margin-left: 3rem;
-  margin-bottom: 3rem;
 }
 
 .footer_payment_div p {
@@ -42,29 +47,29 @@
 }
 
 .footer_div2 {
-  padding-right: 13rem;
+  padding: 0rem 1.5rem;
 }
 
 .footer_div3 {
-  margin-right: 5rem;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  height: auto;
 }
 
 .footer_div3 a {
   color: white;
 }
 
-.footer_socials {
+/* .footer_socials {
   margin-left: 5rem;
-}
+} */
 
 .footer_socials img {
   width: 45px;
   height: 30px;
   background-color: black;
-  margin: 0rem 0rem 9rem 0rem;
+  margin-bottom: 2rem;
   border-radius: 10%;
 }
 

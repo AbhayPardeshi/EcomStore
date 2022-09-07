@@ -3,6 +3,7 @@
 }
 
 .hero_logo img {
-  width: 750px;
+  width: 50%;
   margin: 3rem 0rem;
+  height: 100%;
 }

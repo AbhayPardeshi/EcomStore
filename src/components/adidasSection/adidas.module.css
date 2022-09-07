@@ -1,5 +1,8 @@
-.adidas_banner {
+.adidas_section {
   padding: 0rem 3rem;
+}
+
+.adidas_banner {
   margin-top: 3rem;
 }
 
@@ -12,13 +15,13 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   column-gap: 0.5rem;
-  padding: 0rem 3rem;
+  /* padding: 0rem 3rem; */
   /* margin-bottom: 3rem; */
 }
 
 .adidas_grid,
 .grid_items img {
-  max-width: 240px;
+  width: 100%;
 }
 
 .btn_div {

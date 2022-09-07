@@ -2,6 +2,10 @@
   font-size: 2.5rem;
 }
 
+.trendingItems_div {
+  margin: 6rem 0rem 7rem 0rem;
+}
+
 .trendingItems_div p {
   text-align: center;
   position: relative;
@@ -12,13 +16,13 @@
   grid-template-columns: repeat(5, 1fr);
   padding: 0rem 3rem;
   column-gap: 0.6rem;
-  row-gap: 1.5rem;
+  row-gap: 5rem;
 }
 
 .trendingItems_section img {
-  width: 280px;
-  /* min-height: 200px; */
-  height: 250px;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .trendingItems_section a {

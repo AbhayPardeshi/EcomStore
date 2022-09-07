@@ -11,13 +11,14 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   padding: 0rem 3rem;
-  row-gap: 1.5rem;
+  row-gap: 6rem;
   column-gap: 0.6rem;
 }
 
 .shoe_section img {
-  max-width: 285px;
-  min-height: 200px;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .shoe_section a {
@@ -30,7 +31,6 @@
 
 .shoe_info p {
   margin: 0;
-
   text-align: start;
 }
 

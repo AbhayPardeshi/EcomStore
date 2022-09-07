@@ -1,29 +1,12 @@
-import { Adidas } from "./components/adidasSection/Adidas";
-import { Footer } from "./components/footer/Footer";
-import { GodfatherShoePalace } from "./components/godfatherSection/GodfatherShoePalace";
-import HeaderImage from "./components/hero-image/HeaderImage";
-import { HeroLogo } from "./components/hero-logo/HeroLogo";
-import { JordanShop } from "./components/jordanSection/JordanShop";
-import { MaisonSacre } from "./components/maisonSacreSection/MaisonSacre";
-import Navbar from "./components/navbar/Navbar";
-import { Recommended } from "./components/recommendedSection/Recommended";
-import { StoryLocation } from "./components/storyLocationSection/StoryLocation";
-import { Trending } from "./components/trendingSection/Trending";
+import Home from "./pages/home/Home";
+import Layout from "./pages/layout/Layout";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <HeaderImage />
-      <HeroLogo />
-      <GodfatherShoePalace />
-      <JordanShop />
-      <Adidas />
-      <MaisonSacre />
-      <Recommended />
-      <Trending />
-      <StoryLocation />
-      <Footer />
+      <Layout>
+        <Home />
+      </Layout>
     </>
   );
 }

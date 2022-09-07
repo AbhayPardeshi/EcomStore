@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./story-location.module.css";
 export const StoryLocation = () => {
   return (
-    <section>
+    <section className={styles.storyLocation_section}>
       <div className={styles.story_div}>
         <p className={styles.heading}>SHOE PALACE | SINCE 1993</p>
         <p className={styles.sub_heading}> OUR STORY</p>
