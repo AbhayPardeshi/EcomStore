@@ -3,6 +3,7 @@ import shoeData from "./shoeData";
 import styles from "./recommended.module.css";
 
 export const ImageContainer = () => {
+  console.log(shoeData);
   return (
     <>
       {shoeData.map((shoe) => {
