@@ -2,8 +2,6 @@ import { React, useState } from "react";
 import styles from "./filter.module.css";
 import { data } from "./filterAttributes";
 import { IoIosArrowDropdown } from "react-icons/io";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { FiFilter } from "react-icons/fi";
 
 const Filter = () => {
   const [filterValue, setFilterValue] = useState(null);
@@ -17,7 +15,7 @@ const Filter = () => {
 
   return (
     <>
-      <section className={styles.filter_section}>
+      <aside className={styles.filter_section}>
         <article className={styles.filter_article}>
           <div className={styles.main_header_div}>
             <p className={styles.main_header}>Filters</p>
@@ -177,26 +175,7 @@ const Filter = () => {
             })}
           </div>
         </article>
-
-        <article className={styles.applied_filters}>
-          <div className={styles.products}>
-            <span>5 Products</span>
-            <span>
-              <FiFilter />
-            </span>
-          </div>
-
-          <div className={styles.all_applied_filters}>
-            <span className={styles.applied_filters_name}>Applied Filters</span>
-            <div className={styles.applied_filters_black_div}>
-              <span>Nike</span>
-              <span>
-                <AiFillCloseCircle />
-              </span>
-            </div>
-          </div>
-        </article>
-      </section>
+      </aside>
     </>
   );
 };
