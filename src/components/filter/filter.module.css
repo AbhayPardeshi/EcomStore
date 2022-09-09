@@ -1,11 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
-
 .filter_section {
-  width: 20%;
-  margin: 2rem 0rem;
+  display: flex;
+  margin: 4rem 0rem;
+}
+
+.filter_article {
+  width: 25%;
   border: 1px solid black;
   padding: 0.5rem 0.2rem;
   margin-left: 0.1rem;
+  margin-right: 1rem;
 }
 
 .filter_section p {
@@ -63,4 +66,42 @@
   background-color: red;
   border: 0.1rem solid black;
   color: white;
+}
+
+.applied_filters {
+  width: 100%;
+}
+
+.products {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid black;
+}
+
+.products span {
+  font-size: 1.5rem;
+}
+
+.all_applied_filters {
+  display: flex;
+  gap: 1rem;
+}
+
+.applied_filters_name {
+  font-size: 1.5rem;
+}
+
+.applied_filters_black_div {
+  margin-top: 0.5rem;
+  background-color: black;
+  color: white;
+  padding: 0.25rem;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.applied_filters_black_div span {
+  font-size: 1rem;
 }

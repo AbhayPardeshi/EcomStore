@@ -1,0 +1,23 @@
+.item_section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.item_article {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 5rem;
+  column-gap: 1rem;
+  width: 70%;
+}
+
+.single_item_div img {
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.item_anchor {
+  color: black;
+  text-decoration: none;
+}
