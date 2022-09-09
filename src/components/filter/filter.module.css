@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
+.filter_section {
+  width: 20%;
+  margin: 2rem 0rem;
+  border: 1px solid black;
+  padding: 0.5rem 0.2rem;
+  margin-left: 0.1rem;
+}
+
+.filter_section p {
+  margin: 0;
+}
+
+.main_header_div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.main_header {
+  font-size: 1.5rem;
+}
+
+.filters {
+  border: 0.1rem rgb(232, 224, 224) ridge;
+  margin: 0.2rem 0rem;
+}
+
+.filters_header_div {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(211, 207, 207);
+  padding: 0.5rem;
+}
+
+.filters button {
+  gap: 0.1rem;
+  padding: 0.5rem 0.5rem;
+  border: 0.1rem rgb(206, 202, 202) solid;
+  border-radius: 10%;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin: 0.2rem;
+  text-transform: capitalize;
+  background-color: white;
+}
+
+.filters_header {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.filters .dropdown {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  font-size: 1.25rem;
+}
+
+.change_bg {
+  background-color: red;
+  border: 0.1rem solid black;
+  color: white;
+}
