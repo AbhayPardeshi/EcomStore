@@ -62,7 +62,6 @@
 }
 
 .change_bg {
-  background-color: red;
+  color: red;
   border: 0.1rem solid black;
-  color: white;
 }
