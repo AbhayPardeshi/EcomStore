@@ -7,6 +7,7 @@ import DisplayMultipleItems from "./components/display-multipe-items/DisplayMult
 import Sections from "./pages/sections/Sections";
 import Cart from "./pages/cart/Cart";
 import Wishlist from "./pages/wishlist/Wishlist";
+import { PageNotFound } from "./pages/page-not-found/PageNotFound";
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/section" element={<Sections />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Layout>
     </>

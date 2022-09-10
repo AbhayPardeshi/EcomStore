@@ -1,0 +1,28 @@
+.error__text {
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.btn {
+  font-size: 1.25rem;
+  padding: 0.5rem 2.25rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  border-color: transparent;
+  color: #222;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin-top: 1rem;
+  border: #222 solid 1px;
+  margin-bottom: 2rem;
+}
+
+.btn:hover {
+  color: white;
+  background: #222;
+}
