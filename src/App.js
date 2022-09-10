@@ -6,6 +6,7 @@ import Filter from "./components/filter/Filter";
 import DisplayMultipleItems from "./components/display-multipe-items/DisplayMultipleItems";
 import Sections from "./pages/sections/Sections";
 import Cart from "./pages/cart/Cart";
+import Wishlist from "./pages/wishlist/Wishlist";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/multipleitems" element={<DisplayMultipleItems />} />
           <Route path="/section" element={<Sections />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
       </Layout>
     </>

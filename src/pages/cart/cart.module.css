@@ -11,7 +11,6 @@
   transition: var(--mainTransition);
   background: transparent;
   z-index: 2;
-
   /* visibility: hidden; */
 }
 
@@ -59,54 +58,6 @@
 }
 
 /*---------- Cart Item -------------------- */
-.cart_item {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid gray;
-}
-
-.cart_item img {
-  width: 10rem;
-  height: 7rem;
-}
-
-.cart_item h4 {
-  font-size: 0.85rem;
-  text-transform: capitalize;
-  letter-spacing: var(--mainSpacing);
-  margin: 0;
-}
-
-.cart_item h5 {
-  margin: 0.5rem 0;
-  letter-spacing: var(--mainSpacing);
-}
-
-.item_count {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid black;
-  width: fit-content;
-}
-
-.item_amount {
-  text-align: center;
-}
-
-.remove_item {
-  color: grey;
-  cursor: pointer;
-  text-transform: capitalize;
-  margin: 0;
-}
-
-.item_count span {
-  cursor: pointer;
-}
 
 /*---------- End of Cart Item -------------------- */
 
