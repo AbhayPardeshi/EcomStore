@@ -1,0 +1,45 @@
+.wishlist_item {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid gray;
+}
+
+.wishlist_item img {
+  width: 9rem;
+  height: 7rem;
+}
+
+.wishlist_item p {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+.remove_item {
+  color: grey;
+  cursor: pointer;
+  text-transform: capitalize;
+  margin-top: 1rem;
+}
+
+.item_count span {
+  cursor: pointer;
+}
+
+.addToCart_btn {
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  border-color: transparent;
+  color: black;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin-top: 1rem;
+  border: #222 solid 1px;
+}
+.addToCart_btn:hover {
+  color: white;
+  background: black;
+}
