@@ -8,6 +8,8 @@ import Sections from "./pages/sections/Sections";
 import Cart from "./pages/cart/Cart";
 import Wishlist from "./pages/wishlist/Wishlist";
 import { PageNotFound } from "./pages/page-not-found/PageNotFound";
+import LoginPage from "./components/authentication/LoginPage";
+import SignupPage from "./components/authentication/SignupPage";
 function App() {
   return (
     <>
@@ -20,6 +22,8 @@ function App() {
           <Route path="/section" element={<Sections />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Layout>
