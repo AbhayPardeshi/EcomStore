@@ -8,7 +8,7 @@ export const data = {
     "$201 - $400",
     "$401 and up",
   ],
-  sizes: [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11],
+  sizes: ["7", "7.5", "8", "8.5", "9", "9.5", "10", "10.5", "11"],
   color: ["Black", "White", "Blue", "Red", "Grey", "Green", "Beige", "Brown"],
   brands: [
     "adidas",
@@ -18,6 +18,5 @@ export const data = {
     "new balance",
     "sacre",
     "puma",
-    "anibad",
   ],
 };

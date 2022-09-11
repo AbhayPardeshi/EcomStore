@@ -13,6 +13,10 @@ const Cart = () => {
           </span>
           <h2>shopping cart</h2>
           <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
           <div class={styles.cart_footer}>
             <h3>Summary</h3>
             <h3>

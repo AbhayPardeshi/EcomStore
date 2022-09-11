@@ -45,7 +45,6 @@
   transition: all 0.3s linear;
   margin: 0.2rem;
   text-transform: capitalize;
-  background-color: white;
 }
 
 .filters_header {
@@ -62,6 +61,7 @@
 }
 
 .change_bg {
-  color: red;
+  background-color: rgb(203, 58, 58);
+  color: white;
   border: 0.1rem solid black;
 }
