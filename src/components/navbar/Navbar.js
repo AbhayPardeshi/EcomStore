@@ -2,6 +2,7 @@ import React from "react";
 import { NavbarActionButton } from "./navbar-action-button/NavbarActionButton";
 import { NavbarLinks } from "./navbar-links/NavbarLinks";
 import styles from "./navbar.module.css";
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
@@ -13,11 +14,13 @@ const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbar_center}>
           <section>
-            <img
-              className={styles.logo}
-              src="/assets/images/Shoe_palace.webp"
-              alt="comfyFeet"
-            />
+            <Link to="/">
+              <img
+                className={styles.logo}
+                src="/assets/images/Shoe_palace.webp"
+                alt="comfyFeet"
+              />
+            </Link>
           </section>
         </div>
         <NavbarLinks />

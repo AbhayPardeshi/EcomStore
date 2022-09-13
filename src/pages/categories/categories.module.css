@@ -1,0 +1,33 @@
+.category_images {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.category_images img {
+  width: 100%;
+  height: auto;
+}
+
+.category_name {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2rem 0rem;
+}
+
+.section_div {
+  display: grid;
+  grid-template-areas: "filter main";
+  grid-template-columns: 0.25fr 0.7fr;
+  width: 100%;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.filter__div {
+  grid-area: "filter";
+}
+
+.main_wrapper {
+  grid-area: "main";
+}

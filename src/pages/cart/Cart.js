@@ -2,15 +2,18 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import CartItem from "../../components/cart-item-card/CartItem";
 import styles from "./cart.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div class={styles.cart_overlay}>
         <div class={styles.cart}>
-          <span class={styles.close_cart}>
+          <span class={styles.close_cart} onClick={() => navigate(-1)}>
             <AiOutlineClose />
           </span>
+
           <h2>shopping cart</h2>
           <CartItem />
           <CartItem />

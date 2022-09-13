@@ -2,13 +2,15 @@ import React from "react";
 import WishlistItem from "../../components/wishlist-item/WishlistItem";
 import styles from "./wishlist.module.css";
 import { AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div class={styles.wishlist_overlay}>
         <div class={styles.wishlist}>
-          <span class={styles.close_wishlist}>
+          <span class={styles.close_wishlist} onClick={() => navigate(-1)}>
             <AiOutlineClose />
           </span>
           <h2>shopping wishlist</h2>
