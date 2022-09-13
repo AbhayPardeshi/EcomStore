@@ -16,7 +16,6 @@ export const data = {
     "nike",
     "maison article",
     "new balance",
-    "sacre",
     "puma",
   ],
 };
