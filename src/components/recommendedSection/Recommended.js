@@ -6,9 +6,8 @@ export const Recommended = () => {
   return (
     <main className={styles.recommend_div}>
       <p id={styles.heading}>RECOMMENDED FOR YOU</p>
-      <div className={styles.shoe_section}>
-        <ImageContainer />
-      </div>
+
+      <ImageContainer />
     </main>
   );
 };

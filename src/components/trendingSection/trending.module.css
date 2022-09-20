@@ -11,21 +11,25 @@
   position: relative;
 }
 
-.trendingItems_section {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 0rem 3rem;
-  column-gap: 0.6rem;
-  row-gap: 5rem;
+.trendingItems_section_singleItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  margin-top: 5rem;
 }
 
-.trendingItems_section img {
+.trendingItems_section_singleItem article {
+  margin-right: 1rem;
+}
+
+.trendingItems_section_singleItem img {
   width: 100%;
   height: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
 }
 
-.trendingItems_section a {
+.trendingItems_section_singleItem a {
   text-decoration: none;
 }
 
@@ -57,6 +61,6 @@
 }
 
 .pale_color_heading {
-  color: #d3c6c6;
+  color: #867c7c;
   font-size: 0.8rem;
 }

@@ -7,21 +7,25 @@
   position: relative;
 }
 
-.shoe_section {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  padding: 0rem 3rem;
-  row-gap: 6rem;
-  column-gap: 0.6rem;
+.recommendedItem_section_singleItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 2rem;
+  margin-top: 5rem;
 }
 
-.shoe_section img {
+.recommendedItem_section_singleItem article {
+  margin-right: 1rem;
+}
+
+.recommendedItem_section_singleItem img {
   height: 100%;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
 }
 
-.shoe_section a {
+.recommendedItem_section_singleItem a {
   text-decoration: none;
 }
 .shoe_info {
@@ -48,6 +52,8 @@
 }
 
 .pale_color_heading {
-  color: #d3c6c6;
+  color: #867c7c;
   font-size: 0.8rem;
 }
+
+/* carousel */
