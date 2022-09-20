@@ -4,22 +4,23 @@ import { FcLike } from "react-icons/fc";
 import { BsSearch } from "react-icons/bs";
 
 import styles from "./navbar-action-button.module.css";
+import { NavLink } from "react-router-dom";
 
 export const NavbarActionButton = () => {
   return (
     <div className={styles.action_links}>
-      <a href="#" className={styles.like_btn}>
+      <NavLink to="/wishlist" className={styles.like_btn}>
         <FcLike />
-      </a>
-      <a href="#">
+      </NavLink>
+      <NavLink to="/login">
         <FaRegUser />
-      </a>
-      <a href="#">
+      </NavLink>
+      <NavLink to="/cart">
         <FaCartPlus />
-      </a>
-      <a href="#">
+      </NavLink>
+      <NavLink to="#">
         <BsSearch />
-      </a>
+      </NavLink>
     </div>
   );
 };

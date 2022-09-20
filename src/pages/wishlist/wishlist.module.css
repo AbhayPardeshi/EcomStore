@@ -9,8 +9,9 @@
   width: 100%;
   height: 100%;
   transition: var(--mainTransition);
-  background: transparent;
+  background: rgb(245, 243, 238);
   z-index: 2;
+
   /* visibility: hidden; */
 }
 

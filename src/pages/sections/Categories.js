@@ -3,7 +3,7 @@ import styles from "./section.module.css";
 import Filter from "../../components/filter/Filter";
 import DisplayMultipleItems from "../../components/display-multipe-items/DisplayMultipleItems";
 
-const Sections = () => {
+export const Categories = () => {
   return (
     <>
       <article className={styles.category_images}>
@@ -24,5 +24,3 @@ const Sections = () => {
     </>
   );
 };
-
-export default Sections;

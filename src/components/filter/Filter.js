@@ -8,13 +8,6 @@ const Filter = () => {
 
   const selectFilterHandler = (e) => {
     let value = e.target.value;
-    // if (filterValue.includes(value)) {
-    //   setFilterValue((previous) => {
-    //     return previous.filter((val) => val !== value);
-    //   });
-    // } else {
-    //   setFilterValue((previous) => [...previous, value]);
-    // }
 
     setFilterValue((previous) =>
       previous.includes(value)
@@ -160,7 +153,7 @@ const Filter = () => {
                 <IoIosArrowDropdown />
               </button>
             </div>
-            {data.sizes.map((item, index) => {
+            {data.sizes.menSize.map((item, index) => {
               return (
                 <button
                   key={index}

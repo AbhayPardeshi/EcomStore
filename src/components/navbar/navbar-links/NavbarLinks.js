@@ -1,43 +1,44 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./navbar-links.module.css";
 
 export const NavbarLinks = () => {
   return (
     <ul className={styles.nav_links}>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="/category/new" className={styles.link_btn}>
           new
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="/category/men" className={styles.link_btn}>
           men
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="/category/women" className={styles.link_btn}>
           women
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="/category/kids" className={styles.link_btn}>
           kids
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="#" className={styles.link_btn}>
           brands
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="#" className={styles.link_btn}>
           releases
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a href="#" className={styles.link_btn}>
+        <NavLink to="#" className={styles.link_btn}>
           sales
-        </a>
+        </NavLink>
       </li>
     </ul>
   );
