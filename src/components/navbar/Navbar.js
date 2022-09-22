@@ -1,9 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/auth/AuthProvider";
 import { NavbarActionButton } from "./navbar-action-button/NavbarActionButton";
 import { NavbarLinks } from "./navbar-links/NavbarLinks";
 import styles from "./navbar.module.css";
 const Navbar = () => {
+  const { userAuthState } = useAuth();
+  
   return (
     <>
       <div className={styles.container}>

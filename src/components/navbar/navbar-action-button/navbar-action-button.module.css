@@ -1,6 +1,8 @@
 .action_links {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   /* margin-left: 1.2rem; */
 }
 
@@ -8,8 +10,17 @@
   color: #b1b1b3;
   font-size: 1.25rem;
   margin: 0rem 1rem;
+  text-decoration: none;
 }
 
-.action_links .like_btn {
+.account_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   color: #b1b1b3;
+  font-size: 1.25rem;
+  margin: 0rem 1rem;
+  text-decoration: none;
+  cursor: pointer;
 }
