@@ -52,7 +52,7 @@ export const data = {
   ],
   brands: [
     "adidas",
-    "air jordan",
+    "jordan",
     "nike",
     "maison article",
     "new balance",

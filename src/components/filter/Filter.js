@@ -2,19 +2,30 @@ import { React, useState } from "react";
 import styles from "./filter.module.css";
 import { data } from "./filterAttributes";
 import { IoIosArrowDropdown } from "react-icons/io";
-
+import { useFilter } from "../../contexts/filter/FilterProvider";
+import { useProducts } from "../../contexts/products/ProductProvider";
+import { Link } from "react-router-dom";
 const Filter = () => {
-  const [filterValue, setFilterValue] = useState([]);
+  const { filterDispatch, filterState } = useFilter();
+  const { filters } = useProducts();
 
+  const uniqueBrands = Array.from(new Set(filters.brands));
+  // const uniqueColors = 
   const selectFilterHandler = (e) => {
     let value = e.target.value;
-
-    setFilterValue((previous) =>
-      previous.includes(value)
-        ? previous.filter((val) => val !== value)
-        : [...previous, value]
-    );
+    if (filterState.brandName.includes(value.toUpperCase())) {
+      filterDispatch({ type: "REMOVE_BRAND", payload: value.toUpperCase() });
+    } else {
+      filterDispatch({ type: "ADD_BRAND", payload: value.toUpperCase() });
+    }
   };
+  const checkIfApplied = (filterType, name) => {
+    return filterState[filterType]?.includes(name.toUpperCase());
+  };
+  const clearFilterHandler = () => {
+    filterDispatch({ type: "CLEAR_ALL_FILTERS" });
+  };
+
 
   return (
     <>
@@ -22,7 +33,13 @@ const Filter = () => {
         <article className={styles.filter_article}>
           <div className={styles.main_header_div}>
             <p className={styles.main_header}>Filters</p>
-            <p className={styles.main_clear}>Clear All</p>
+            <p
+              role={"button"}
+              onClick={clearFilterHandler}
+              className={styles.main_clear}
+            >
+              Clear All
+            </p>
           </div>
 
           <div className={styles.filters}>
@@ -38,7 +55,7 @@ const Filter = () => {
             </div>
 
             <div>
-              {data.brands.map((item, index) => {
+              {uniqueBrands?.map((item, index) => {
                 return (
                   <button
                     key={index}
@@ -46,7 +63,7 @@ const Filter = () => {
                     value={item}
                     onClick={(e) => selectFilterHandler(e)}
                     className={`${
-                      filterValue.includes(item) ? styles.change_bg : ""
+                      checkIfApplied("brandName", item) ? styles.change_bg : ""
                     }`}
                   >
                     {item}
@@ -78,7 +95,9 @@ const Filter = () => {
                       value={item}
                       onClick={(e) => selectFilterHandler(e)}
                       className={`${
-                        filterValue.includes(item) ? styles.change_bg : ""
+                        checkIfApplied("productColors", item)
+                          ? styles.change_bg
+                          : ""
                       }`}
                     >
                       {item}
@@ -101,17 +120,21 @@ const Filter = () => {
             </div>
             {data.gender.map((item, index) => {
               return (
-                <button
-                  key={index}
-                  type="button"
-                  value={item}
-                  onClick={(e) => selectFilterHandler(e)}
-                  className={`${
-                    filterValue.includes(item) ? styles.change_bg : ""
-                  }`}
-                >
-                  {item}
-                </button>
+                <Link to={`/category/${item}`}>
+                  <button
+                    key={index}
+                    type="button"
+                    value={item}
+                    onClick={(e) => selectFilterHandler(e)}
+                    className={`${
+                      filterState.categoryName === item.toUpperCase()
+                        ? styles.change_bg
+                        : ""
+                    }`}
+                  >
+                    {item}
+                  </button>
+                </Link>
               );
             })}
           </div>
@@ -134,7 +157,9 @@ const Filter = () => {
                   value={item}
                   onClick={(e) => selectFilterHandler(e)}
                   className={`${
-                    filterValue.includes(item) ? styles.change_bg : ""
+                    checkIfApplied("productPriceRanges", item)
+                      ? styles.change_bg
+                      : ""
                   }`}
                 >
                   {item}
@@ -161,7 +186,7 @@ const Filter = () => {
                   value={item}
                   onClick={(e) => selectFilterHandler(e)}
                   className={`${
-                    filterValue.includes(item) ? styles.change_bg : ""
+                    checkIfApplied("productSize", item) ? styles.change_bg : ""
                   }`}
                 >
                   {item}

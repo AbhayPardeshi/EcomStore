@@ -2,8 +2,18 @@ import React from "react";
 import styles from "./section.module.css";
 import Filter from "../../components/filter/Filter";
 import DisplayMultipleItems from "../../components/display-multipe-items/DisplayMultipleItems";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useFilter } from "../../contexts/filter/FilterProvider";
+import { applyCategoryFilter } from "../../utils";
 
 export const Categories = () => {
+  const params = useParams();
+  const { filterDispatch } = useFilter();
+  useEffect(() => {
+    const categoryName = params.id;
+    applyCategoryFilter(filterDispatch, categoryName);
+  }, [params]);
   return (
     <>
       <article className={styles.category_images}>

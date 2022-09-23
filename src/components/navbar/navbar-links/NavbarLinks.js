@@ -1,8 +1,23 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./navbar-links.module.css";
+import { useFilter } from "../../../contexts/filter/FilterProvider";
+import { Toast } from "../../../utils/Toast";
 
 export const NavbarLinks = () => {
+  const { filterDispatch } = useFilter();
+  const navigate = useNavigate();
+  // const clickHandler = (category) => {
+  //   navigate(`/category/${category}`);
+  //   let setTimeoutID = setTimeout(() => {
+  //     filterDispatch({
+  //       type: "CATEGORY_FILTER",
+  //       payload: `${category}`,
+  //     });
+  //     Toast({ type: "success", msg: `${category}s' products filtered.` });
+  //   }, 0);
+  //   clearTimeout(setTimeoutID);
+  // };
   return (
     <ul className={styles.nav_links}>
       <li>
@@ -26,17 +41,17 @@ export const NavbarLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="#" className={styles.link_btn}>
+        <NavLink to="/category/brands" className={styles.link_btn}>
           brands
         </NavLink>
       </li>
       <li>
-        <NavLink to="#" className={styles.link_btn}>
+        <NavLink to={"#"} className={styles.link_btn}>
           releases
         </NavLink>
       </li>
       <li>
-        <NavLink to="#" className={styles.link_btn}>
+        <NavLink to={"#"} className={styles.link_btn}>
           sales
         </NavLink>
       </li>

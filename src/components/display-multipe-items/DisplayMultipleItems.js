@@ -3,13 +3,18 @@ import styles from "./multipleItems.module.css";
 import { data } from "./multipleItemsData";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FiFilter } from "react-icons/fi";
-
+import { useFilter } from "../../contexts/filter/FilterProvider";
+import { Link, useParams } from "react-router-dom";
+import { Toast } from "../../utils/Toast";
+import { useEffect } from "react";
 const DisplayMultipleItems = () => {
+  const { sortedProducts } = useFilter();
+  const productsCount = sortedProducts?.length;
   return (
     <section className={styles.item_section}>
       <article className={styles.applied_filters}>
         <div className={styles.products}>
-          <span>5 Products</span>
+          <span>{productsCount} Products</span>
           <span>
             <FiFilter />
           </span>
@@ -27,17 +32,17 @@ const DisplayMultipleItems = () => {
       </article>
 
       <article className={styles.item_article}>
-        {data.map((item) => {
+        {sortedProducts?.map((item) => {
           return (
-            <>
-              <div className={styles.single_item_div}>
+            <Link to={`/products/${item.categoryName.toLowerCase()}/${item._id}`}>
+              <div className={styles.single_item_div} key={item._id}>
                 <a href="#" className={styles.item_anchor}>
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.imageUrl} alt={item.name} />
                   <div className={styles.item_name}>{item.name}</div>
-                  <div className={styles.item_price}>${item.price}</div>
+                  <div className={styles.item_price}>${item.originalPrice}</div>
                 </a>
               </div>
-            </>
+            </Link>
           );
         })}
       </article>

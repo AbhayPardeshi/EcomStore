@@ -23,7 +23,7 @@ const breakPoints = [
 ];
 
 export const ImageContainer = () => {
-  console.log(shoeData);
+
   return (
     <>
       <Carousel breakPoints={breakPoints}>

@@ -1,25 +1,57 @@
+import { useEffect } from "react";
 import { React, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useFetch } from "../../services";
 // import { cardItems } from "./CardItemData";
 import styles from "./displayItem.module.css";
-
+const initialApiData = {
+  apiURL: "",
+  method: "GET",
+  postMethodData: {},
+  encodedToken: "",
+};
 const DisplayItem = () => {
+  const [apiData, setApiData] = useState(initialApiData);
+  const [product, setProduct] = useState({});
   const [shoeSize, setSize] = useState(null);
   const sizeChangeHandler = (e) => {
     setSize(e.target.value);
   };
+  const params = useParams();
+  const id = params.id;
+  useEffect(() => {
+    setApiData((prev) => {
+      return {
+        ...prev,
+        apiURL: `/products/${id}`,
+        method: "GET",
+      };
+    });
+  }, [params]);
+
+  const { isLoading, serverResponse, error } = useFetch(
+    apiData.apiURL,
+    apiData.method
+  );
+
+  useEffect(() => {
+    if (serverResponse) {
+      setProduct(() => ({ ...serverResponse.data.product[0] }));
+    }
+  }, [serverResponse]);
   return (
     <>
       <section className={styles.item_section}>
         <div className={styles.item_image_div}>
-          <img src="./assets/images/recom1.webp" alt="name" />
+          <img src={product?.imageUrl} alt="name" />
         </div>
         <div className={styles.item_details_div}>
-          <p className={styles.brand}>AIR JORDAN</p>
-          <p className={styles.type}>MENS LIFESTYLE SHOES</p>
-          <p className={styles.name}>1 MID GREEN YELLOW</p>
-          <p className={styles.price}>$135.00</p>
+          <p className={styles.brand}>{product?.make}</p>
+          <p className={styles.type}>{product?.description}</p>
+          <p className={styles.name}>{product?.name}</p>
+          <p className={styles.price}>${product?.originalPrice}</p>
           <div className={styles.shoe_size}>
-            {[7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11].map((size) => {
+            {product?.availableSize?.map((size) => {
               return (
                 <button
                   type="button"
