@@ -10,13 +10,22 @@ const Filter = () => {
   const { filters } = useProducts();
 
   const uniqueBrands = Array.from(new Set(filters.brands));
-  // const uniqueColors = 
+  const uniqueColors = Array.from(new Set(filters.productColors));
+
   const selectFilterHandler = (e) => {
     let value = e.target.value;
+    console.log(value);
     if (filterState.brandName.includes(value.toUpperCase())) {
       filterDispatch({ type: "REMOVE_BRAND", payload: value.toUpperCase() });
     } else {
       filterDispatch({ type: "ADD_BRAND", payload: value.toUpperCase() });
+    }
+
+    if (filterState.productColors.includes(value.toUpperCase())) {
+      console.log("hii");
+      filterDispatch({ type: "REMOVE_COLOR", payload: value.toUpperCase() });
+    } else {
+      filterDispatch({ type: "ADD_COLOR", payload: value.toUpperCase() });
     }
   };
   const checkIfApplied = (filterType, name) => {
@@ -26,6 +35,7 @@ const Filter = () => {
     filterDispatch({ type: "CLEAR_ALL_FILTERS" });
   };
 
+  console.log(filterState);
 
   return (
     <>
@@ -86,7 +96,7 @@ const Filter = () => {
             </div>
 
             <div>
-              {data.color.map((item, index) => {
+              {uniqueColors?.map((item, index) => {
                 return (
                   <>
                     <button

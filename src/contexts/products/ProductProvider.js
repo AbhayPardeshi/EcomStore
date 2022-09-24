@@ -11,7 +11,11 @@ const useProducts = () => useContext(ProductContext);
 const initialFilters = {
   productColors: [],
   brands: [],
-  productSize: [],
+  productSize: {
+    men: [],
+    women: [],
+    kids: [],
+  },
   category: [],
 };
 const ProductProvider = ({ children }) => {
@@ -38,13 +42,44 @@ const ProductProvider = ({ children }) => {
 
   useEffect(() => {
     for (let product of productsState.productList) {
+      // const category = product.categoryName;
+      // console.log(category);
+      // let size;
+      // if (category === "MEN") {
+      //   setFilters((prev) => ({
+      //     ...prev,
+      //     productSize: {
+      //       ...prev.productSize,
+      //       men: [...prev.productSize?.men, size],
+      //     },
+      //   }));
+      // }
+      // else if (category === "WOMEN") {
+      //   setFilters((prev) => ({
+      //     ...prev,
+      //     productSize: {
+      //       ...prev.productSize,
+      //       women: [...prev.productSize?.women, size],
+      //     },
+      //   }));
+      // } else if (category === "KIDS") {
+      //   setFilters((prev) => ({
+      //     ...prev,
+      //     productSize: {
+      //       ...prev.productSize,
+      //       kids: [...prev.productSize?.kids, size],
+      //     },
+      //   }));
+      // }
       setFilters((prev) => ({
         productColors: [...prev.productColors, product.productColor],
         brands: [...prev.brands, product.make],
-        productSize: [...prev.productSize],
+        // productSize: {...prev.productSize, ...product.availableSize},
         category: [...prev.category, product.categoryName],
       }));
     }
+    console.log(productsState);
+    console.log(filters);
   }, [productsState.productList]);
   return (
     <ProductContext.Provider

@@ -4,6 +4,7 @@ import { filterReducer } from "./filterReducer";
 import { categoryFilter, brandFilter } from "../../utils";
 import { useReducer } from "react";
 import { useEffect } from "react";
+import { colorFilter } from "../../utils/colorFilter";
 
 const FilterContext = createContext();
 const useFilter = () => useContext(FilterContext);
@@ -21,10 +22,11 @@ const FilterProvider = ({ children }) => {
     filterReducer,
     initialFilterState
   );
-  
 
   let sortedProducts = categoryFilter(productList, filterState.categoryName);
   sortedProducts = brandFilter(sortedProducts, filterState.brandName);
+  console.log(filterState.productColors);
+  sortedProducts = colorFilter(sortedProducts, filterState.productColors);
 
   return (
     <FilterContext.Provider
@@ -34,7 +36,6 @@ const FilterProvider = ({ children }) => {
         sortedProducts,
         isLoading,
         error,
-        
       }}
     >
       {children}
