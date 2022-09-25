@@ -27,21 +27,27 @@ const Filter = () => {
     }
 
     if (filterState.productPriceRanges.includes(value)) {
-      console.log("hii");
       filterDispatch({ type: "REMOVE_PRICE_RANGE", payload: value });
     } else {
-      console.log("hii");
       filterDispatch({ type: "ADD_PRICE_RANGE", payload: value });
     }
   };
   const checkIfApplied = (filterType, name) => {
     return filterState[filterType]?.includes(name.toUpperCase());
   };
+
+  const checkIfPriceApplied = (price) => {
+    return filterState.productPriceRanges?.includes(`${price[0]},${price[1]}`);
+  };
   const clearFilterHandler = () => {
     filterDispatch({ type: "CLEAR_ALL_FILTERS" });
   };
 
-  console.log(filterState);
+  const getArrayFromString = (str) => {
+    const str1 = str.split(" - ");
+    const arr1 = str1.map((value) => value.slice(1));
+    return arr1.map((value) => Number(value));
+  };
 
   return (
     <>
@@ -170,10 +176,12 @@ const Filter = () => {
                 <button
                   key={index}
                   type="button"
-                  value={item}
+                  value={getArrayFromString(item)}
                   onClick={(e) => selectFilterHandler(e)}
                   className={`${
-                    checkIfApplied("productPriceRanges", item)
+                    checkIfPriceApplied(
+                      item.split(" - ").map((x) => x.slice(1))
+                    )
                       ? styles.change_bg
                       : ""
                   }`}

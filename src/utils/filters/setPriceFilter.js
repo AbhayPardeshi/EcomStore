@@ -1,40 +1,41 @@
 export const setPriceRange = (state, payload) => {
-  const priceRange = payload;
+  const priceRange = String(payload);
+
   switch (priceRange) {
-    case "$0 - $50":
+    case "0,50":
       return {
         ...state,
-        productPriceRanges: [...state.productPriceRanges, [0, 50]],
+        productPriceRanges: [...state.productPriceRanges, priceRange],
       };
 
-    case "$51 - $100":
+    case "51,100":
       return {
         ...state,
-        productPriceRanges: [...state.productPriceRanges, [51, 100]],
+        productPriceRanges: [...state.productPriceRanges, priceRange],
       };
 
-    case "$101 - $150":
+    case "101,150":
       return {
         ...state,
-        productPriceRanges: [...state.productPriceRanges, [101, 150]],
+        productPriceRanges: [...state.productPriceRanges, priceRange],
       };
 
-    case "$151 - $200":
+    case "151,200":
       return {
         ...state,
-        productPriceRanges: [...state.productPriceRanges, [151, 200]],
+        productPriceRanges: [...state.productPriceRanges, priceRange],
       };
 
-    case "$201 - $400":
+    case "201,400":
       return {
         ...state,
-        productPriceRanges: [...state.productPriceRanges, [201, 400]],
+        productPriceRanges: [...state.productPriceRanges, priceRange],
       };
 
-    case "$401 And Up":
+    case "401,400000":
       return {
         ...state,
-        productPriceRanges: [...state.productPriceRanges, [401, 100000]],
+        productPriceRanges: [...state.productPriceRanges, priceRange],
       };
 
     default:

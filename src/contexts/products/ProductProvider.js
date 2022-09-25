@@ -83,7 +83,6 @@ const ProductProvider = ({ children }) => {
     }
   }, [productsState.productList]);
 
-  console.log(filters);
   return (
     <ProductContext.Provider
       value={{

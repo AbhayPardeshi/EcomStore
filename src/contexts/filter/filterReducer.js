@@ -41,17 +41,16 @@ export const filterReducer = (state, action) => {
       };
 
     case ADD_PRICE_RANGE:
-      console.log(state.productPriceRanges);
       return setPriceRange(state, payload);
     case REMOVE_PRICE_RANGE:
-    // const priceRange = state.productPriceRanges.filter(
-    //   (name) => name !== payload
-    // );
+      const priceRange = state.productPriceRanges.filter(
+        (name) => name !== payload
+      );
 
-    // return {
-    //   ...state,
-    //   productPriceRanges: [...priceRange],
-    // };
+      return {
+        ...state,
+        productPriceRanges: [...priceRange],
+      };
 
     default:
       return { ...state };

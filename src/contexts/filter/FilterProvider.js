@@ -26,9 +26,8 @@ const FilterProvider = ({ children }) => {
   let sortedProducts = categoryFilter(productList, filterState.categoryName);
   sortedProducts = brandFilter(sortedProducts, filterState.brandName);
   sortedProducts = colorFilter(sortedProducts, filterState.productColors);
-  console.log(sortedProducts);
   sortedProducts = priceFilter(sortedProducts, filterState.productPriceRanges);
-  console.log(sortedProducts);
+
   return (
     <FilterContext.Provider
       value={{
