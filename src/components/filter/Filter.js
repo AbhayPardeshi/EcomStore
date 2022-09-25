@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import styles from "./filter.module.css";
 import { data } from "./filterAttributes";
 import { IoIosArrowDropdown } from "react-icons/io";
@@ -14,7 +14,6 @@ const Filter = () => {
 
   const selectFilterHandler = (e) => {
     let value = e.target.value;
-    console.log(value);
     if (filterState.brandName.includes(value.toUpperCase())) {
       filterDispatch({ type: "REMOVE_BRAND", payload: value.toUpperCase() });
     } else {
@@ -22,10 +21,17 @@ const Filter = () => {
     }
 
     if (filterState.productColors.includes(value.toUpperCase())) {
-      console.log("hii");
       filterDispatch({ type: "REMOVE_COLOR", payload: value.toUpperCase() });
     } else {
       filterDispatch({ type: "ADD_COLOR", payload: value.toUpperCase() });
+    }
+
+    if (filterState.productPriceRanges.includes(value)) {
+      console.log("hii");
+      filterDispatch({ type: "REMOVE_PRICE_RANGE", payload: value });
+    } else {
+      console.log("hii");
+      filterDispatch({ type: "ADD_PRICE_RANGE", payload: value });
     }
   };
   const checkIfApplied = (filterType, name) => {

@@ -74,13 +74,16 @@ const ProductProvider = ({ children }) => {
       setFilters((prev) => ({
         productColors: [...prev.productColors, product.productColor],
         brands: [...prev.brands, product.make],
-        // productSize: {...prev.productSize, ...product.availableSize},
+        // productSize: [
+        //   prev,
+        //   ...new Set(productsState.productList.map((Val) => Val.availableSize)),
+        // ],
         category: [...prev.category, product.categoryName],
       }));
     }
-    console.log(productsState);
-    console.log(filters);
   }, [productsState.productList]);
+
+  console.log(filters);
   return (
     <ProductContext.Provider
       value={{
