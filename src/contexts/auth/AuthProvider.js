@@ -99,7 +99,6 @@ const AuthProvider = ({ children }) => {
           type: "success",
           msg: `Logged in as ${decodedToken[0].firstName} ${decodedToken[0].lastName}`,
         });
-        navigate(`/`);
       }
     });
     return () => clearTimeout(setTimeOutId);

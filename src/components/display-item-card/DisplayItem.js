@@ -1,9 +1,13 @@
 import { useEffect } from "react";
 import { React, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../contexts/auth/AuthProvider";
+import { useCartAndWishlist } from "../../contexts/cartAndwishlist/CartAndWishlistProvider";
 import { useFetch } from "../../services";
-// import { cardItems } from "./CardItemData";
 import styles from "./displayItem.module.css";
+import { Toast } from "../../utils/Toast";
+import { useNavigate } from "react-router-dom";
+
 const initialApiData = {
   apiURL: "",
   method: "GET",
@@ -11,9 +15,25 @@ const initialApiData = {
   encodedToken: "",
 };
 const DisplayItem = () => {
+  const navigate = useNavigate();
+  const {
+    cartAndWishlistDispatch,
+    showCart,
+    setShowCart,
+    showWishlist,
+    setShowWishlist,
+    cartItems,
+  } = useCartAndWishlist();
+
+  const {
+    userAuthState: { isUserLoggedIn },
+  } = useAuth();
+
   const [apiData, setApiData] = useState(initialApiData);
   const [product, setProduct] = useState({});
   const [shoeSize, setSize] = useState(null);
+  console.log(product);
+  console.log(product.isAddedToCart);
   const sizeChangeHandler = (e) => {
     setSize(e.target.value);
   };
@@ -39,6 +59,23 @@ const DisplayItem = () => {
       setProduct(() => ({ ...serverResponse.data.product[0] }));
     }
   }, [serverResponse]);
+  console.log(product.isAddedToCart);
+  const addToCartHandler = (e) => {
+    e.stopPropagation();
+    if (isUserLoggedIn) {
+      cartAndWishlistDispatch({ type: "ADD_TO_CART", payload: { ...product } });
+      let setTimeoutID;
+      setTimeoutID = setTimeout(() => {
+        setShowCart(true);
+      }, 1000);
+    } else {
+      Toast({
+        type: "warning",
+        msg: "Please Login To Add to Cart",
+      });
+      navigate("/login");
+    }
+  };
   return (
     <>
       <section className={styles.item_section}>
@@ -64,7 +101,12 @@ const DisplayItem = () => {
               );
             })}
           </div>
-          <button className={styles.btn}>ADD TO CART</button>
+
+          <button className={styles.btn} onClick={addToCartHandler}>
+            ADD TO CART
+          </button>
+
+          <button className={styles.btn}>ADD TO WISHLIST</button>
         </div>
       </section>
       ;

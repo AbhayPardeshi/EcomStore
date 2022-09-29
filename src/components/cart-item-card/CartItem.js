@@ -1,29 +1,38 @@
 import React from "react";
 import styles from "./cartItem.module.css";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useCartAndWishlist } from "../../contexts/cartAndwishlist/CartAndWishlistProvider";
+import { CartHandlers } from "../../utils/cart/cartHandlers";
 
-const CartItem = () => {
+const CartItem = ({ products }) => {
+  const { cartAndWishlistDispatch } = useCartAndWishlist();
+  const { name, originalPrice, quantitiesInCart, _id, imageUrl } = products;
+  const { cartItemDeleteHandler, cartDecrementHandler, cartIncrementHandler } =
+    CartHandlers(cartAndWishlistDispatch);
   return (
     <>
       <div class={styles.cart_item}>
-        <img
-          src="https://cdn.shopify.com/s/files/1/0852/3376/products/23f9df4a7379d529a9f4fd0c8ab13cc8_2048x2048.jpg?v=1661556625&title=jordan-ct8013-015-air-jordan-12-retro-stealth-mens-lifestyle-shoes-grey-white-free-shipping"
-          alt="product"
-        />
+        <img src={imageUrl} />
         <div>
-          <p>MENS LIFESTYLE SHOES AIR JORDAN 12 RETRO STEALTH</p>
-          <p>$200.00</p>
+          <p>{name}</p>
+          <p>${originalPrice}</p>
           <p className={styles.cart_item_size}>8</p>
           <div className={styles.item_count}>
-            <span>
+            <span role="button" onClick={(e) => cartDecrementHandler(e, _id)}>
               <AiOutlineMinus />
             </span>
-            <span class={styles.item_amount}>1</span>
-            <span>
+            <span class={styles.item_amount}>{quantitiesInCart}</span>
+            <span role="button" onClick={(e) => cartIncrementHandler(e, _id)}>
               <AiOutlinePlus />
             </span>
           </div>
-          <p class={styles.remove_item}>remove item</p>
+          <p
+            role="button"
+            onClick={(e) => cartItemDeleteHandler(e, _id)}
+            class={styles.remove_item}
+          >
+            remove item
+          </p>
         </div>
       </div>
     </>

@@ -75,7 +75,7 @@
 
 .checkout_btn {
   font-size: 1.25rem;
-  padding: 0.5rem 5rem;
+  padding: 0.5rem 3rem;
   border-radius: 2rem;
   text-transform: uppercase;
   border-color: transparent;
@@ -84,6 +84,7 @@
   cursor: pointer;
   transition: all 0.3s linear;
   margin-top: 1rem;
+  width: 18rem;
 }
 .checkout_btn:hover {
   color: #222;

@@ -30,8 +30,6 @@ export const useFetch = (
               authorization: encodedToken,
             },
           });
-          // const [serverResponse, setServerResponse] = useState();
-          console.log(serverResponse);
           break;
         case "DELETE":
           serverResponse = await axios.delete(API_URL, {
