@@ -55,7 +55,7 @@ export const CartAndWishlistProvider = ({ children }) => {
     if (serverResponse) {
       if (serverResponse?.data?.cart?.qty) {
         console.log(serverResponse.data.cart.products);
-        setCartItems([...serverResponse.data.cart.products]);
+        setCartItems(serverResponse.data.cart.products);
       } else if (serverResponse?.data?.wishlist?.qty) {
         setWishlistItems([...serverResponse.data.wishlist.products]);
       }

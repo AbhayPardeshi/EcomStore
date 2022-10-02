@@ -39,7 +39,7 @@ const ProductProvider = ({ children }) => {
       }
     }
   }, [serverResponse]);
-
+  console.log(productsState);
   useEffect(() => {
     for (let product of productsState.productList) {
       // const category = product.categoryName;
