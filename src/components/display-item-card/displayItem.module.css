@@ -43,6 +43,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0.25rem;
+  margin-bottom: 2rem;
 }
 
 .shoe_size button {
@@ -73,6 +74,26 @@
   margin-left: 5rem;
 }
 .btn:hover {
+  color: #222;
+  background: white;
+  border: 0.1rem solid black;
+}
+
+.btn_link {
+  text-decoration: none;
+  font-size: 1.25rem;
+  padding: 0.5rem 6rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  border-color: transparent;
+  color: white;
+  background: #222;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  margin-left: 5rem;
+}
+
+.btn_link:hover {
   color: #222;
   background: white;
   border: 0.1rem solid black;

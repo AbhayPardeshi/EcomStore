@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { React, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/auth/AuthProvider";
 import { useCartAndWishlist } from "../../contexts/cartAndwishlist/CartAndWishlistProvider";
 import { useFetch } from "../../services";
 import styles from "./displayItem.module.css";
+import { isItemInCartAndWishlist } from "../../utils/cart/isItemInCartAndWishlist";
 import { Toast } from "../../utils/Toast";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +26,7 @@ const DisplayItem = () => {
     cartItems,
   } = useCartAndWishlist();
 
+  const { isItemInCart } = isItemInCartAndWishlist(cartItems);
   const {
     userAuthState: { isUserLoggedIn },
   } = useAuth();
@@ -60,14 +62,18 @@ const DisplayItem = () => {
     }
   }, [serverResponse]);
   console.log(product.isAddedToCart);
-  const addToCartHandler = (e) => {
+  const addToCartHandler = (e, item) => {
     e.stopPropagation();
+    // let setTimeoutID;
     if (isUserLoggedIn) {
-      cartAndWishlistDispatch({ type: "ADD_TO_CART", payload: { ...product } });
-      let setTimeoutID;
-      setTimeoutID = setTimeout(() => {
-        setShowCart(true);
-      }, 1000);
+      cartAndWishlistDispatch({
+        type: "ADD_TO_CART",
+        payload: { ...item },
+      });
+      Toast({ type: "success", msg: `${item.name} added to cart.` });
+      // setTimeoutID = setTimeout(() => {
+      //   setShowCart(true);
+      // }, 1000);
     } else {
       Toast({
         type: "warning",
@@ -102,9 +108,18 @@ const DisplayItem = () => {
             })}
           </div>
 
-          <button className={styles.btn} onClick={addToCartHandler}>
-            ADD TO CART
-          </button>
+          {isItemInCart(product?._id) ? (
+            <Link className={styles.btn_link} to={"/cart"}>
+              GO TO CART
+            </Link>
+          ) : (
+            <button
+              className={styles.btn}
+              onClick={(e) => addToCartHandler(e, product)}
+            >
+              ADD TO CART
+            </button>
+          )}
 
           <button className={styles.btn}>ADD TO WISHLIST</button>
         </div>
