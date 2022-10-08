@@ -25,7 +25,6 @@ const DisplayItem = () => {
     setShowWishlist,
     cartItems,
   } = useCartAndWishlist();
-
   const { isItemInCart } = isItemInCartAndWishlist(cartItems);
   const {
     userAuthState: { isUserLoggedIn },
@@ -35,7 +34,6 @@ const DisplayItem = () => {
   const [product, setProduct] = useState({});
   const [shoeSize, setSize] = useState(null);
   console.log(product);
-  console.log(product.isAddedToCart);
   const sizeChangeHandler = (e) => {
     setSize(e.target.value);
   };
@@ -64,16 +62,34 @@ const DisplayItem = () => {
   console.log(product.isAddedToCart);
   const addToCartHandler = (e, item) => {
     e.stopPropagation();
-    // let setTimeoutID;
+    let setTimeoutID;
     if (isUserLoggedIn) {
       cartAndWishlistDispatch({
         type: "ADD_TO_CART",
         payload: { ...item },
       });
       Toast({ type: "success", msg: `${item.name} added to cart.` });
-      // setTimeoutID = setTimeout(() => {
-      //   setShowCart(true);
-      // }, 1000);
+      setTimeoutID = setTimeout(() => {
+        setShowCart(true);
+      }, 1000);
+    } else {
+      Toast({
+        type: "warning",
+        msg: "Please Login To Add to Cart",
+      });
+      navigate("/login");
+    }
+  };
+
+  const addToWishlistHandler = (e, item) => {
+    e.stopPropagation();
+
+    if (isUserLoggedIn) {
+      cartAndWishlistDispatch({
+        type: "ADD_TO_WISHLIST",
+        payload: { ...item },
+      });
+      Toast({ type: "success", msg: `${item.name} added to wishlist.` });
     } else {
       Toast({
         type: "warning",
@@ -84,47 +100,57 @@ const DisplayItem = () => {
   };
   return (
     <>
-      <section className={styles.item_section}>
-        <div className={styles.item_image_div}>
-          <img src={product?.imageUrl} alt="name" />
+      {isLoading ? (
+        <div className={styles.loader_container}>
+          <div className={styles.spinner}></div>
         </div>
-        <div className={styles.item_details_div}>
-          <p className={styles.brand}>{product?.make}</p>
-          <p className={styles.type}>{product?.description}</p>
-          <p className={styles.name}>{product?.name}</p>
-          <p className={styles.price}>${product?.originalPrice}</p>
-          <div className={styles.shoe_size}>
-            {product?.availableSize?.map((size) => {
-              return (
-                <button
-                  type="button"
-                  value={size}
-                  onClick={(e) => sizeChangeHandler(e)}
-                  className={`${shoeSize == size ? styles.change_bg : ""}`}
-                >
-                  {size}
-                </button>
-              );
-            })}
+      ) : (
+        <section className={styles.item_section}>
+          <div className={styles.item_image_div}>
+            <img src={product?.imageUrl} alt="name" />
           </div>
+          <div className={styles.item_details_div}>
+            <p className={styles.brand}>{product?.make}</p>
+            <p className={styles.type}>{product?.description}</p>
+            <p className={styles.name}>{product?.name}</p>
+            <p className={styles.price}>${product?.originalPrice}</p>
+            <div className={styles.shoe_size}>
+              {product?.availableSize?.map((size) => {
+                return (
+                  <button
+                    type="button"
+                    value={size}
+                    onClick={(e) => sizeChangeHandler(e)}
+                    className={`${shoeSize == size ? styles.change_bg : ""}`}
+                  >
+                    {size}
+                  </button>
+                );
+              })}
+            </div>
 
-          {isItemInCart(product?._id) ? (
-            <Link className={styles.btn_link} to={"/cart"}>
-              GO TO CART
-            </Link>
-          ) : (
+            {isItemInCart(product?._id) ? (
+              <Link className={styles.btn_link} to={"/cart"}>
+                GO TO CART
+              </Link>
+            ) : (
+              <button
+                className={styles.btn}
+                onClick={(e) => addToCartHandler(e, product)}
+              >
+                ADD TO CART
+              </button>
+            )}
+
             <button
               className={styles.btn}
-              onClick={(e) => addToCartHandler(e, product)}
+              onClick={(e) => addToWishlistHandler(e, product)}
             >
-              ADD TO CART
+              ADD TO WISHLIST
             </button>
-          )}
-
-          <button className={styles.btn}>ADD TO WISHLIST</button>
-        </div>
-      </section>
-      ;
+          </div>
+        </section>
+      )}
     </>
   );
 };
