@@ -6,10 +6,12 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useFilter } from "../../contexts/filter/FilterProvider";
 import { applyCategoryFilter } from "../../utils";
+import { useFetch } from "../../services";
 
 export const Categories = () => {
   const params = useParams();
   const { filterDispatch } = useFilter();
+  const { isLoading } = useFetch();
   useEffect(() => {
     const categoryName = params.id;
     applyCategoryFilter(filterDispatch, categoryName);
@@ -27,6 +29,7 @@ export const Categories = () => {
         <div className={styles.filter__div}>
           <Filter />
         </div>
+
         <div className={styles.main_wrapper}>
           <DisplayMultipleItems />
         </div>

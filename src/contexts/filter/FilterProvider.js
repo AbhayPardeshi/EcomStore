@@ -10,7 +10,7 @@ const FilterContext = createContext();
 const useFilter = () => useContext(FilterContext);
 export const initialFilterState = {
   brandName: [],
-  categoryName: "",
+  categoryName: [],
   productColors: [],
   productPriceRanges: [],
   productSize: [],
@@ -27,7 +27,7 @@ const FilterProvider = ({ children }) => {
   sortedProducts = brandFilter(sortedProducts, filterState.brandName);
   sortedProducts = colorFilter(sortedProducts, filterState.productColors);
   sortedProducts = priceFilter(sortedProducts, filterState.productPriceRanges);
-
+  console.log(filterState);
   return (
     <FilterContext.Provider
       value={{
