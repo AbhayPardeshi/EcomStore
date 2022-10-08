@@ -9,43 +9,52 @@ import { priceHandler } from "../../utils/cart/priceHandler";
 const Cart = () => {
   const navigate = useNavigate();
   const { cartItems } = useCartAndWishlist();
-  console.log(cartItems);
   const { getTotalPrice } = priceHandler();
+  const cartLength = cartItems?.length;
   return (
-    <>
-      <div class={styles.cart_overlay}>
-        <div class={styles.cart}>
-          <span
-            role="button"
-            onClick={() => navigate(-1)}
-            class={styles.close_cart}
-          >
-            <AiOutlineClose />
-          </span>
-          <h2>shopping cart</h2>
-          {cartItems.map((products) => {
+    <div className={styles.cart_overlay}>
+      <div className={styles.cart}>
+        <span
+          role="button"
+          onClick={() => navigate(-1)}
+          className={styles.close_cart}
+        >
+          <AiOutlineClose />
+        </span>
+        <h2>shopping cart</h2>
+        {cartLength === 0 ? (
+          <div className={styles.emptyCart}>
+            <h2>Your Cart is Empty!!!</h2>
+          </div>
+        ) : (
+          cartItems?.map((products) => {
             return <CartItem key={products._id} products={products} />;
-          })}
-
-          <div class={styles.cart_footer}>
+          })
+        )}
+        {cartLength === 0 ? (
+          <div></div>
+        ) : (
+          <div className={styles.cart_footer}>
             <h3>Summary</h3>
             <h3>
-              your total : ${" "}
-              <span class={styles.cart_total}>
+              your total : $
+              <span className={styles.cart_total}>
                 {Math.trunc(getTotalPrice(cartItems))}
               </span>
             </h3>
 
-            <button class={styles.checkout_btn}>
+            <button className={styles.checkout_btn}>
               checkout ${Math.trunc(getTotalPrice(cartItems))}
             </button>
-            <button onClick={() => navigate(-1)} class={styles.continue_btn}>
-              continue shopping
-            </button>
           </div>
+        )}
+        <div className={styles.buttonDiv}>
+          <button onClick={() => navigate(-1)} className={styles.continue_btn}>
+            continue shopping
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

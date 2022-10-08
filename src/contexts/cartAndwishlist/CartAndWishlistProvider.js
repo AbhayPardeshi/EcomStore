@@ -39,25 +39,26 @@ export const CartAndWishlistProvider = ({ children }) => {
   );
 
   useEffect(() => {
+    let setTimeOutId;
     if (!isUserLoggedIn) {
       cartAndWishlistDispatch({ type: "USER_NOT_LOGGEDIN" });
     } else {
-      let setTimeOutId;
       setTimeOutId = setTimeout(() => {
         cartAndWishlistDispatch({ type: "GET_CART_PRODUCTS" });
+        setTimeOutId = setTimeout(() => {
+          cartAndWishlistDispatch({ type: "GET_WISHLIST_PRODUCTS" });
+        }, 0);
       }, 0);
-      cartAndWishlistDispatch({ type: "GET_WISHLIST_PRODUCTS" });
-      return () => clearTimeout(setTimeOutId);
     }
+    return () => clearTimeout(setTimeOutId);
   }, [isUserLoggedIn]);
 
   useEffect(() => {
     if (serverResponse) {
       if (serverResponse?.data?.cart?.qty) {
-        console.log(serverResponse.data.cart.products);
         setCartItems(serverResponse.data.cart.products);
       } else if (serverResponse?.data?.wishlist?.qty) {
-        setWishlistItems([...serverResponse.data.wishlist.products]);
+        setWishlistItems(serverResponse.data.wishlist.products);
       }
     }
   }, [serverResponse]);

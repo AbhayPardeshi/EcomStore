@@ -5,8 +5,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { FiFilter } from "react-icons/fi";
 import { useFilter } from "../../contexts/filter/FilterProvider";
 import { Link, useParams } from "react-router-dom";
-import { Toast } from "../../utils/Toast";
-import { useEffect } from "react";
+
 const DisplayMultipleItems = () => {
   const { sortedProducts } = useFilter();
   const productsCount = sortedProducts?.length;
@@ -23,7 +22,7 @@ const DisplayMultipleItems = () => {
         <div className={styles.all_applied_filters}>
           <span className={styles.applied_filters_name}>Applied Filters</span>
           <div className={styles.applied_filters_black_div}>
-            <span>Nike</span>
+            <span>nike</span>
             <span>
               <AiFillCloseCircle />
             </span>
@@ -34,7 +33,9 @@ const DisplayMultipleItems = () => {
       <article className={styles.item_article}>
         {sortedProducts?.map((item) => {
           return (
-            <Link to={`/products/${item.categoryName.toLowerCase()}/${item._id}`}>
+            <Link
+              to={`/products/${item.categoryName.toLowerCase()}/${item._id}`}
+            >
               <div className={styles.single_item_div} key={item._id}>
                 <a href="#" className={styles.item_anchor}>
                   <img src={item.imageUrl} alt={item.name} />

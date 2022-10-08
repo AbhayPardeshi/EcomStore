@@ -1,22 +1,54 @@
 import React from "react";
+import { useCartAndWishlist } from "../../contexts/cartAndwishlist/CartAndWishlistProvider";
+import { useFetch } from "../../services";
+import { CartHandlers } from "../../utils/cart/cartHandlers";
 import styles from "./wishlistItem.module.css";
 
 const WishlistItem = () => {
+  const { wishlistItems, cartAndWishlistDispatch } = useCartAndWishlist();
+  const { wishlistItemDeleteHandler, moveToCart } = CartHandlers(
+    cartAndWishlistDispatch
+  );
+  const length = wishlistItems?.length;
+  console.log(length);
   return (
     <>
-      <div class={styles.wishlist_item}>
-        <img
-          src="https://cdn.shopify.com/s/files/1/0852/3376/products/23f9df4a7379d529a9f4fd0c8ab13cc8_2048x2048.jpg?v=1661556625&title=jordan-ct8013-015-air-jordan-12-retro-stealth-mens-lifestyle-shoes-grey-white-free-shipping"
-          alt="product"
-        />
-        <div>
-          <p>MENS LIFESTYLE SHOES </p>
-          <p>AIR JORDAN 12 RETRO STEALTH</p>
-          <p>$200.00</p>
-          <p class={styles.remove_item}>remove item</p>
-          <button class={styles.addToCart_btn}>move to cart</button>
+      {length === 0 ? (
+        <div className={styles.emptyWishlist}>
+          <h2>Your Wishlist is Empty!!!</h2>
         </div>
-      </div>
+      ) : (
+        wishlistItems.map((product, index) => {
+          const { imageUrl, name, description, originalPrice, _id } = product;
+          return (
+            <>
+              <div class={styles.wishlist_item} key={index}>
+                <img src={imageUrl} alt={name} />
+                <div>
+                  <p>{description} </p>
+                  <p>{name}</p>
+                  <p>${originalPrice}</p>
+                  <p
+                    class={styles.remove_item}
+                    role="button"
+                    onClick={(e) => wishlistItemDeleteHandler(e, _id)}
+                  >
+                    remove item
+                  </p>
+                  <button
+                    onClick={(e) => {
+                      moveToCart(e, product);
+                    }}
+                    class={styles.addToCart_btn}
+                  >
+                    move to cart
+                  </button>
+                </div>
+              </div>
+            </>
+          );
+        })
+      )}
     </>
   );
 };

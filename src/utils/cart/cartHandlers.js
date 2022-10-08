@@ -32,9 +32,38 @@ export const CartHandlers = (cartAndWishlistDispatch) => {
     });
   };
 
+  const wishlistItemDeleteHandler = (e, id) => {
+    e.stopPropagation();
+    cartAndWishlistDispatch({
+      type: "DELETE_WISHLIST_PRODUCTS",
+      payload: id,
+    });
+    Toast({ type: "success", msg: `Item removed from wishlist.` });
+  };
+
+  const moveToCart = (e, item) => {
+    e.stopPropagation();
+    cartAndWishlistDispatch({
+      type: "DELETE_WISHLIST_PRODUCTS",
+      payload: item._id,
+    });
+
+    let setTimeoutID;
+    setTimeoutID = setTimeout(() => {
+      cartAndWishlistDispatch({
+        type: "ADD_TO_CART",
+        payload: item,
+      });
+    }, 0);
+    Toast({ type: "success", msg: `${item.name} moved to cart.` });
+    return () => clearTimeout(setTimeoutID);
+  };
+
   return {
     cartIncrementHandler,
     cartItemDeleteHandler,
     cartDecrementHandler,
+    wishlistItemDeleteHandler,
+    moveToCart,
   };
 };
