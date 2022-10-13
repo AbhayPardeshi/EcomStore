@@ -24,8 +24,12 @@ const DisplayItem = () => {
     showWishlist,
     setShowWishlist,
     cartItems,
+    wishlistItems,
   } = useCartAndWishlist();
-  const { isItemInCart } = isItemInCartAndWishlist(cartItems);
+  const { isItemInCart, isItemInWishlist } = isItemInCartAndWishlist(
+    cartItems,
+    wishlistItems
+  );
   const {
     userAuthState: { isUserLoggedIn },
   } = useAuth();
@@ -79,6 +83,10 @@ const DisplayItem = () => {
       });
       navigate("/login");
     }
+
+    return () => {
+      clearTimeout(setTimeoutID);
+    };
   };
 
   const addToWishlistHandler = (e, item) => {
@@ -142,12 +150,16 @@ const DisplayItem = () => {
               </button>
             )}
 
-            <button
-              className={styles.btn}
-              onClick={(e) => addToWishlistHandler(e, product)}
-            >
-              ADD TO WISHLIST
-            </button>
+            {isItemInWishlist(product?._id) ? (
+              <div></div>
+            ) : (
+              <button
+                className={styles.btn}
+                onClick={(e) => addToWishlistHandler(e, product)}
+              >
+                ADD TO WISHLIST
+              </button>
+            )}
           </div>
         </section>
       )}

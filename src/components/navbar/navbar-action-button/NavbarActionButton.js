@@ -6,20 +6,43 @@ import { BsSearch } from "react-icons/bs";
 import styles from "./navbar-action-button.module.css";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth/AuthProvider";
+import { useCartAndWishlist } from "../../../contexts/cartAndwishlist/CartAndWishlistProvider";
 
 export const NavbarActionButton = () => {
   const { userAuthState } = useAuth();
   const { isUserLoggedIn } = userAuthState;
   const { logoutHandler } = useAuth();
+  const { cartItems, wishlistItems } = useCartAndWishlist();
   return (
     <>
       <div className={styles.action_links}>
-        <NavLink to="/wishlist" className={styles.like_btn}>
-          <AiOutlineHeart />
-        </NavLink>
-        <NavLink to="/cart">
-          <FaCartPlus />
-        </NavLink>
+        <div className={styles.wishlistLink}>
+          <span>
+            <NavLink to="/wishlist" className={styles.like_btn}>
+              <AiOutlineHeart />
+            </NavLink>
+          </span>
+          {wishlistItems?.length ? (
+            <div className={styles.wishlistItemsCount}>
+              {wishlistItems.length}
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
+        <div className={styles.cartLink}>
+          <span>
+            <NavLink to="/cart">
+              <FaCartPlus />
+            </NavLink>
+          </span>
+          {cartItems?.length ? (
+            <div className={styles.cartItemsCount}>{cartItems.length}</div>
+          ) : (
+            <div></div>
+          )}
+        </div>
+
         <NavLink to="#">
           <BsSearch />
         </NavLink>

@@ -3,7 +3,6 @@
   justify-content: space-around;
   align-items: center;
   justify-content: center;
-  /* margin-left: 1.2rem; */
 }
 
 .action_links a {
@@ -23,4 +22,25 @@
   margin: 0rem 1rem;
   text-decoration: none;
   cursor: pointer;
+}
+
+.wishlistLink,
+.cartLink {
+  width: 3rem;
+  position: relative;
+}
+
+.wishlistItemsCount,
+.cartItemsCount {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  padding: 2px 2px 6px 2px;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 10px;
+  right: 5px;
+  top: -8px;
 }
