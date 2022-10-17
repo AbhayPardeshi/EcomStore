@@ -47,16 +47,14 @@ export const NavbarActionButton = () => {
           <BsSearch />
         </NavLink>
         {isUserLoggedIn ? (
-          <div>
-            <p
-              className={styles.account_button}
-              role="button"
-              onClick={logoutHandler}
-            >
-              <FaRegUser />
-              Logout
-            </p>
-          </div>
+          <p
+            className={styles.account_button}
+            role="button"
+            onClick={logoutHandler}
+          >
+            <FaRegUser />
+            Logout
+          </p>
         ) : (
           <NavLink to="/login" className={styles.account_button}>
             <FaRegUser id="button" />

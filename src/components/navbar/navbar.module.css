@@ -1,20 +1,31 @@
-nav {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  height: 80px;
-  border-bottom: 0.1rem solid rgb(156, 153, 153);
-  background-color: white;
-  z-index: 2;
+@media (max-width: 1024px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0rem 5rem;
+  }
+
+  .navbar :nth-child(1) {
+    order: 2;
+  }
+  .navbar :nth-child(2) {
+    order: 3;
+  }
+  .navbar :nth-child(3) {
+    order: 1;
+  }
+  .navbar :nth-child(4) {
+    order: 4;
+  }
+}
+@media (min-width: 1024px) {
+  .navbar {
+    justify-content: space-evenly;
+  }
 }
 
 .logo {
   height: 3rem;
 }
-
 .subscribe_para {
   margin: 0;
   text-align: center;
@@ -22,4 +33,16 @@ nav {
   font-size: 1.19rem;
   background-color: black;
   color: white;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  border-bottom: 0.1rem solid rgb(156, 153, 153);
+  background-color: white;
+  z-index: 2;
 }

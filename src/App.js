@@ -8,6 +8,7 @@ import { PageNotFound } from "./pages/page-not-found/PageNotFound";
 import LoginPage from "./components/authentication/LoginPage";
 import SignupPage from "./components/authentication/SignupPage";
 import { Categories } from "./pages/sections/Categories";
+import { Sidebar } from "./components/navbar/sidebar/Sidebar";
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="*" element={<PageNotFound />} />
+          <Route path="/sidebar" element={<Sidebar />} />
         </Routes>
       </Layout>
     </>
