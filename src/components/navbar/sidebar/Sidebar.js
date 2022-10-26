@@ -22,7 +22,7 @@ export const Sidebar = () => {
             <ul className={styles.sidebar_links}>
               <li className={styles.links}>
                 <NavLink
-                  to="/category/new"
+                  to="/new"
                   onClick={closeSidebar}
                   className={styles.link_btn}
                 >

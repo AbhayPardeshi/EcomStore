@@ -9,6 +9,7 @@ import LoginPage from "./components/authentication/LoginPage";
 import SignupPage from "./components/authentication/SignupPage";
 import { Categories } from "./pages/sections/Categories";
 import { Sidebar } from "./components/navbar/sidebar/Sidebar";
+import NewArrivals from "./pages/newArrivals/NewArrivals";
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
             path="/products/:catergoryName/:id"
             element={<DisplayItem />}
           />
+          <Route path="/new" element={<NewArrivals />} />
           <Route path="/category/:id" element={<Categories />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />

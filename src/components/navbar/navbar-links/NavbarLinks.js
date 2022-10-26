@@ -12,7 +12,7 @@ export const NavbarLinks = () => {
     <>
       <ul className={styles.nav_links}>
         <li>
-          <NavLink to="/category/new" className={styles.link_btn}>
+          <NavLink to="/new" className={styles.link_btn}>
             new
           </NavLink>
         </li>

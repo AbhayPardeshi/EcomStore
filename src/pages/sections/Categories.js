@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./section.module.css";
+import styles from "./category.module.css";
 import Filter from "../../components/filter/Filter";
 import DisplayMultipleItems from "../../components/display-multipe-items/DisplayMultipleItems";
 import { useParams } from "react-router-dom";
@@ -12,7 +12,6 @@ import { data } from "./CategoryImages";
 export const Categories = () => {
   const params = useParams();
   const { filterDispatch } = useFilter();
-  const { isLoading } = useFetch();
   const categoryName = params.id;
   useEffect(() => {
     applyCategoryFilter(filterDispatch, categoryName);
