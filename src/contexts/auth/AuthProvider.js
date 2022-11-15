@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import unsign from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../../utils/Toast";
-
 const initialUserAuthState = {
   isUserLoggedIn: false,
   encodedToken: "",
