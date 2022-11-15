@@ -1,4 +1,4 @@
-import { Toast } from "../Toast";
+import { Toast } from "../../services/Toast";
 
 export const CartHandlers = (cartAndWishlistDispatch) => {
   const cartItemDeleteHandler = (e, id) => {

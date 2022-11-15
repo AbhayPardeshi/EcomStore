@@ -6,7 +6,7 @@ import { useCartAndWishlist } from "../../contexts/cartAndwishlist/CartAndWishli
 import { useFetch } from "../../services";
 import styles from "./displayItem.module.css";
 import { isItemInCartAndWishlist } from "../../utils/cart/isItemInCartAndWishlist";
-import { Toast } from "../../utils/Toast";
+import { Toast } from "../../services/Toast";
 import { useNavigate } from "react-router-dom";
 
 const initialApiData = {
