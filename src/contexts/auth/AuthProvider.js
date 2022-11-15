@@ -5,7 +5,7 @@ import { useFetch } from "../../services";
 import { useEffect } from "react";
 import unsign from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { Toast } from "../../utils/Toast";
+// import { Toast } from "../../utils/Toast";
 const initialUserAuthState = {
   isUserLoggedIn: false,
   encodedToken: "",
@@ -70,10 +70,10 @@ const AuthProvider = ({ children }) => {
   const logoutHandler = () => {
     userAuthDispatch({ type: "LOGOUT" });
     localStorage.clear("token");
-    Toast({
-      type: "success",
-      msg: "logged out successfully!",
-    });
+    // Toast({
+    //   type: "success",
+    //   msg: "logged out successfully!",
+    // });
     navigate(`/`);
   };
 
@@ -94,10 +94,10 @@ const AuthProvider = ({ children }) => {
             user: { ...decodedToken },
           },
         });
-        Toast({
-          type: "success",
-          msg: `Logged in as ${decodedToken[0].firstName} ${decodedToken[0].lastName}`,
-        });
+        // Toast({
+        //   type: "success",
+        //   msg: `Logged in as ${decodedToken[0].firstName} ${decodedToken[0].lastName}`,
+        // });
       }
     });
     return () => clearTimeout(setTimeOutId);
@@ -115,17 +115,17 @@ const AuthProvider = ({ children }) => {
         });
         localStorage.setItem("token", token);
 
-        Toast({
-          type: "success",
-          msg: `Logged in as ${decodeToken[0].firstName} ${decodeToken[0].lastName}`,
-        });
+        // Toast({
+        //   type: "success",
+        //   msg: `Logged in as ${decodeToken[0].firstName} ${decodeToken[0].lastName}`,
+        // });
         navigate("/");
       } else if (serverResponse?.status === 201) {
         console.log(serverResponse);
-        Toast({
-          type: "success",
-          msg: "New User Registered",
-        });
+        // Toast({
+        //   type: "success",
+        //   msg: "New User Registered",
+        // });
         navigate("/login");
       } else if (serverResponse?.status === 422) {
         console.log(serverResponse.data.message); // User Already Exits.
