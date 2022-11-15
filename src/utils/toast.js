@@ -1,7 +1,7 @@
 import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Toast = ({ type, msg }) => {
+export const Toast = ({ type, msg }) => {
   return toast(msg, {
     autoClose: 2000,
     closeOnClick: true,
@@ -11,4 +11,3 @@ const Toast = ({ type, msg }) => {
     type: type,
   });
 };
-export { Toast };
