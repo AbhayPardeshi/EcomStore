@@ -1,9 +1,8 @@
-import { Slide } from "react-toastify";
-import { Toast } from "react-toastify/dist/components";
+import { Slide, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const Toast = ({ type, msg }) => {
-  return Toast(msg, {
+  return toast(msg, {
     autoClose: 2000,
     closeOnClick: true,
     pauseOnHover: false,
