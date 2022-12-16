@@ -10,7 +10,7 @@ export const useFetch = (
   const [serverResponse, setServerResponse] = useState();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState({});
-  const API_URL = `https://shoepalace-clone.herokuapp.com` + apiURL;
+  const API_URL = `https://ecomm-backend-two.vercel.app` + apiURL;
 
   const getData = async () => {
     try {

@@ -46,7 +46,9 @@ export const NavbarActionButton = () => {
         <NavLink to="#">
           <BsSearch />
         </NavLink>
-        {isUserLoggedIn ? (
+
+        <div className={styles.authentication}></div>
+        {/* {isUserLoggedIn ? (
           <p
             className={styles.account_button}
             role="button"
@@ -60,7 +62,7 @@ export const NavbarActionButton = () => {
             <FaRegUser id="button" />
             Login
           </NavLink>
-        )}
+        )} */}
       </div>
     </>
   );
