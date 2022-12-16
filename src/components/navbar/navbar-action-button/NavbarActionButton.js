@@ -87,21 +87,6 @@ export const NavbarActionButton = () => {
             " "
           )}
         </div>
-        {/* {isUserLoggedIn ? (
-          <p
-            className={styles.account_button}
-            role="button"
-            onClick={logoutHandler}
-          >
-            <FaRegUser />
-            Logout
-          </p>
-        ) : (
-          <NavLink to="/login" className={styles.account_button}>
-            <FaRegUser id="button" />
-            Login
-          </NavLink>
-        )} */}
       </div>
     </>
   );
