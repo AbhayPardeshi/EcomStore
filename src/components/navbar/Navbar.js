@@ -18,7 +18,7 @@ const Navbar = () => {
         </p>
       </div>
       <nav className={styles.navbar}>
-        <div className={styles.navbar_center}>
+        <div className={styles.navbar_logo}>
           <Link to="/">
             <img
               className={styles.logo}
