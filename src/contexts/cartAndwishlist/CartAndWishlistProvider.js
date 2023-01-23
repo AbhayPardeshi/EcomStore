@@ -59,6 +59,10 @@ export const CartAndWishlistProvider = ({ children }) => {
         setCartItems(serverResponse.data.cart.products);
       } else if (serverResponse?.data?.wishlist?.qty) {
         setWishlistItems(serverResponse.data.wishlist.products);
+      } else if (!serverResponse?.data?.cart?.qty) {
+        setCartItems([]);
+      } else if (!serverResponse?.data?.wishlist?.qty) {
+        setWishlistItems([]);
       }
     }
   }, [serverResponse]);

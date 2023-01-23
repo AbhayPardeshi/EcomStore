@@ -2,7 +2,6 @@ import React from "react";
 import { FaCartPlus, FaRegUser } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
-
 import styles from "./navbar-action-button.module.css";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth/AuthProvider";
@@ -75,9 +74,9 @@ export const NavbarActionButton = () => {
                   </div>
                 ) : (
                   <div className={styles.dropdown}>
-                    <NavLink to="/signup" className={styles.account_button}>
+                    <NavLink to="/login" className={styles.account_button}>
                       <FaRegUser id="button" />
-                      Signup
+                      SignIn
                     </NavLink>
                   </div>
                 )}

@@ -5,10 +5,12 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { FiFilter } from "react-icons/fi";
 import { useFilter } from "../../contexts/filter/FilterProvider";
 import { Link, useParams } from "react-router-dom";
+import { useSelectedFilter } from "../../contexts/SelectedFilters/SelectedFiltersProvider";
 
 const DisplayMultipleItems = () => {
   const { sortedProducts } = useFilter();
   const productsCount = sortedProducts?.length;
+  const { appliedFilters } = useSelectedFilter();
   return (
     <section className={styles.item_section}>
       <article className={styles.applied_filters}>
@@ -21,12 +23,16 @@ const DisplayMultipleItems = () => {
 
         <div className={styles.all_applied_filters}>
           <span className={styles.applied_filters_name}>Applied Filters</span>
-          <div className={styles.applied_filters_black_div}>
-            <span>nike</span>
-            <span>
-              <AiFillCloseCircle />
-            </span>
-          </div>
+          {Array.from(appliedFilters).map((item, index) => {
+            return (
+              <div className={styles.applied_filters_black_div} key={index}>
+                <span>{item}</span>
+                {/* <span>
+                  <AiFillCloseCircle />
+                </span> */}
+              </div>
+            );
+          })}
         </div>
       </article>
 

@@ -8,6 +8,7 @@ import { ProductProvider } from "./contexts/products/ProductProvider";
 import { FilterProvider } from "./contexts/filter/FilterProvider";
 import { CartAndWishlistProvider } from "./contexts/cartAndwishlist/CartAndWishlistProvider";
 import { SidebarProvider } from "./contexts/sidebar/SidebarProvider";
+import { SelectedFiltersProvider } from "./contexts/SelectedFilters/SelectedFiltersProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +19,9 @@ root.render(
           <FilterProvider>
             <CartAndWishlistProvider>
               <SidebarProvider>
-                <App />
+                <SelectedFiltersProvider>
+                  <App />
+                </SelectedFiltersProvider>
               </SidebarProvider>
             </CartAndWishlistProvider>
           </FilterProvider>

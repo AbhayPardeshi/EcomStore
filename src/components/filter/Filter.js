@@ -5,6 +5,7 @@ import { IoIosArrowDropdown } from "react-icons/io";
 import { useFilter } from "../../contexts/filter/FilterProvider";
 import { useProducts } from "../../contexts/products/ProductProvider";
 import { Link } from "react-router-dom";
+import { useSelectedFilter } from "../../contexts/SelectedFilters/SelectedFiltersProvider";
 const Filter = () => {
   const { filterDispatch, filterState } = useFilter();
   const { filters } = useProducts();
@@ -12,22 +13,28 @@ const Filter = () => {
   const uniqueBrands = Array.from(new Set(filters.brands));
   const uniqueColors = Array.from(new Set(filters.productColors));
 
+  const { addAppliedFilters, removeAppliedFilters, removeAllAppliedFilters } =
+    useSelectedFilter();
   const selectFilterHandler = (e) => {
     let value = e.target.value;
+    addAppliedFilters(value);
     if (filterState.brandName.includes(value.toUpperCase())) {
       filterDispatch({ type: "REMOVE_BRAND", payload: value.toUpperCase() });
+      removeAppliedFilters(value);
     } else {
       filterDispatch({ type: "ADD_BRAND", payload: value.toUpperCase() });
     }
 
     if (filterState.productColors.includes(value.toUpperCase())) {
       filterDispatch({ type: "REMOVE_COLOR", payload: value.toUpperCase() });
+      removeAppliedFilters(value);
     } else {
       filterDispatch({ type: "ADD_COLOR", payload: value.toUpperCase() });
     }
 
     if (filterState.productPriceRanges.includes(value)) {
       filterDispatch({ type: "REMOVE_PRICE_RANGE", payload: value });
+      removeAppliedFilters(value);
     } else {
       filterDispatch({ type: "ADD_PRICE_RANGE", payload: value });
     }
@@ -41,6 +48,7 @@ const Filter = () => {
   };
   const clearFilterHandler = () => {
     filterDispatch({ type: "CLEAR_ALL_FILTERS" });
+    removeAllAppliedFilters();
   };
 
   const getArrayFromString = (str) => {
