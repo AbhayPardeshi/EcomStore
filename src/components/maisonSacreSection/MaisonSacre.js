@@ -5,7 +5,7 @@ export const MaisonSacre = () => {
     <>
       <div className={styles.container}>
         <div className={styles.maison_article_div}>
-          <span>MAISON ARTICLE</span>
+          <h1>MAISON ARTICLE</h1>
           <p>Luxury for all</p>
           <button className={styles.btn}>Shop</button>
         </div>

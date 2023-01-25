@@ -26,8 +26,9 @@
   opacity: 0.6;
 }
 
-.maison_article_div > span {
-  font-size: 5.5rem;
+.maison_article_div > h1 {
+  font-size: 3.5rem;
+  margin: 0;
 }
 
 .sacre_div {

@@ -8,7 +8,6 @@ import {
   newArrivalsFilter,
 } from "../../utils";
 import { useReducer } from "react";
-import { useEffect } from "react";
 import { colorFilter } from "../../utils/colorFilter";
 
 const FilterContext = createContext();

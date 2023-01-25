@@ -10,6 +10,7 @@ import SignupPage from "./components/authentication/SignupPage";
 import { Categories } from "./pages/sections/Categories";
 import { Sidebar } from "./components/navbar/sidebar/Sidebar";
 import NewArrivals from "./pages/newArrivals/NewArrivals";
+import Carousal from "./components/carousal/Carousal";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="*" element={<PageNotFound />} />
           <Route path="/sidebar" element={<Sidebar />} />
+          <Route path="/carousel" element={<Carousal />} />
         </Routes>
       </Layout>
     </>

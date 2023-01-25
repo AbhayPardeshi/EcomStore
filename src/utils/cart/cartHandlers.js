@@ -43,11 +43,11 @@ export const CartHandlers = (cartAndWishlistDispatch) => {
 
   const moveToCart = (e, item) => {
     e.stopPropagation();
+
     cartAndWishlistDispatch({
       type: "DELETE_WISHLIST_PRODUCTS",
       payload: item._id,
     });
-
     let setTimeoutID;
     setTimeoutID = setTimeout(() => {
       cartAndWishlistDispatch({

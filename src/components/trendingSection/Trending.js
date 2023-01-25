@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./trending.module.css";
 import Carousel from "react-elastic-carousel";
 import trendingItems from "./trendingData";
+import Carousal from "../carousal/Carousal";
 
 const breakPoints = [
   {
@@ -25,6 +26,7 @@ const breakPoints = [
 export const Trending = () => {
   return (
     <main className={styles.trendingItems_div}>
+      {/* <Carousal /> */}
       <p id={styles.heading}>TRENDING IN SALE</p>
       <Carousel breakPoints={breakPoints}>
         {trendingItems.map((item) => {
