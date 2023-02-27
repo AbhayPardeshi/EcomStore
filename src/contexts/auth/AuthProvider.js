@@ -121,7 +121,6 @@ const AuthProvider = ({ children }) => {
         });
         navigate("/");
       } else if (serverResponse?.status === 201) {
-        console.log(serverResponse);
         Toast({
           type: "success",
           msg: "New User Registered",
