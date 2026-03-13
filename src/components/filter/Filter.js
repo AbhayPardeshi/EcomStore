@@ -4,41 +4,86 @@ import { data } from "./filterAttributes";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { useFilter } from "../../contexts/filter/FilterProvider";
 import { useProducts } from "../../contexts/products/ProductProvider";
-import { Link } from "react-router-dom";
 import { useSelectedFilter } from "../../contexts/SelectedFilters/SelectedFiltersProvider";
-const Filter = () => {
+
+const Filter = ({ showGenderFilter = false }) => {
   const { filterDispatch, filterState } = useFilter();
   const { filters } = useProducts();
 
   const uniqueBrands = Array.from(new Set(filters.brands));
   const uniqueColors = Array.from(new Set(filters.productColors));
+  const activeFiltersCount =
+    filterState.brandName.length +
+    filterState.productColors.length +
+    filterState.productPriceRanges.length +
+    (showGenderFilter && filterState.selectedGender ? 1 : 0);
 
   const { addAppliedFilters, removeAppliedFilters, removeAllAppliedFilters } =
     useSelectedFilter();
-  const selectFilterHandler = (e) => {
-    let value = e.target.value;
+
+  const toggleAppliedFilter = (isApplied, value) => {
+    if (isApplied) {
+      removeAppliedFilters(value);
+      return;
+    }
+
     addAppliedFilters(value);
+  };
+
+  const handleBrandFilter = (value) => {
+    const formattedValue = value.toUpperCase();
+    const isApplied = filterState.brandName.includes(formattedValue);
+
+    toggleAppliedFilter(isApplied, value);
+    
     if (filterState.brandName.includes(value.toUpperCase())) {
-      filterDispatch({ type: "REMOVE_BRAND", payload: value.toUpperCase() });
-      removeAppliedFilters(value);
+      filterDispatch({ type: "REMOVE_BRAND", payload: formattedValue });
     } else {
-      filterDispatch({ type: "ADD_BRAND", payload: value.toUpperCase() });
+      filterDispatch({ type: "ADD_BRAND", payload: formattedValue });
     }
+  };
 
-    if (filterState.productColors.includes(value.toUpperCase())) {
-      filterDispatch({ type: "REMOVE_COLOR", payload: value.toUpperCase() });
-      removeAppliedFilters(value);
+  const handleColorFilter = (value) => {
+    const formattedValue = value.toUpperCase();
+    const isApplied = filterState.productColors.includes(formattedValue);
+
+    toggleAppliedFilter(isApplied, value);
+    if (isApplied) {
+      filterDispatch({ type: "REMOVE_COLOR", payload: formattedValue });
     } else {
-      filterDispatch({ type: "ADD_COLOR", payload: value.toUpperCase() });
+      filterDispatch({ type: "ADD_COLOR", payload: formattedValue });
     }
+  };
 
-    if (filterState.productPriceRanges.includes(value)) {
+  const handlePriceFilter = (value) => {
+    const isApplied = filterState.productPriceRanges.includes(value);
+
+    toggleAppliedFilter(isApplied, value);
+    if (isApplied) {
       filterDispatch({ type: "REMOVE_PRICE_RANGE", payload: value });
-      removeAppliedFilters(value);
     } else {
       filterDispatch({ type: "ADD_PRICE_RANGE", payload: value });
     }
   };
+
+  const handleGenderFilter = (value) => {
+    const formattedValue = value.toUpperCase();
+    const isApplied = filterState.selectedGender === formattedValue;
+
+    if (isApplied) {
+      filterDispatch({ type: "CLEAR_GENDER" });
+      removeAppliedFilters(value);
+      return;
+    }
+
+    if (filterState.selectedGender) {
+      removeAppliedFilters(filterState.selectedGender.toLowerCase());
+    }
+
+    filterDispatch({ type: "SET_GENDER", payload: formattedValue });
+    addAppliedFilters(value);
+  };
+
   const checkIfApplied = (filterType, name) => {
     return filterState[filterType]?.includes(name.toUpperCase());
   };
@@ -62,14 +107,23 @@ const Filter = () => {
       <aside className={styles.filter_section}>
         <article className={styles.filter_article}>
           <div className={styles.main_header_div}>
-            <p className={styles.main_header}>Filters</p>
-            <p
-              role={"button"}
+            <div>
+              <p className={styles.main_eyebrow}>Refine Results</p>
+              <p className={styles.main_header}>Filters</p>
+            
+            </div>
+            <button
+              type="button"
               onClick={clearFilterHandler}
               className={styles.main_clear}
             >
               Clear All
-            </p>
+            </button>
+          </div>
+
+          <div className={styles.filter_status}>
+            <span>{activeFiltersCount} active</span>
+            <span>{filters.brands.length} brands available</span>
           </div>
 
           <div className={styles.filters}>
@@ -84,14 +138,14 @@ const Filter = () => {
               </button>
             </div>
 
-            <div>
+            <div className={styles.filter_options}>
               {uniqueBrands?.map((item, index) => {
                 return (
                   <button
                     key={index}
                     type="button"
                     value={item}
-                    onClick={(e) => selectFilterHandler(e)}
+                    onClick={() => handleBrandFilter(item)}
                     className={`${
                       checkIfApplied("brandName", item) ? styles.change_bg : ""
                     }`}
@@ -115,59 +169,56 @@ const Filter = () => {
               </button>
             </div>
 
-            <div>
+            <div className={styles.filter_options}>
               {uniqueColors?.map((item, index) => {
                 return (
-                  <>
-                    <button
-                      key={index}
-                      type="button"
-                      value={item}
-                      onClick={(e) => selectFilterHandler(e)}
-                      className={`${
-                        checkIfApplied("productColors", item)
-                          ? styles.change_bg
-                          : ""
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  </>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className={styles.filters}>
-            <div className={styles.filters_header_div}>
-              <p className={styles.filters_header}>Gender</p>
-              <button
-                className={styles.dropdown}
-                // onClick={(e) => setIsActive(!isActive)}
-              >
-                <IoIosArrowDropdown />
-              </button>
-            </div>
-            {data.gender.map((item, index) => {
-              return (
-                <Link to={`/category/${item}`}>
                   <button
                     key={index}
                     type="button"
                     value={item}
-                    onClick={(e) => selectFilterHandler(e)}
+                    onClick={() => handleColorFilter(item)}
                     className={`${
-                      filterState.categoryName === item.toUpperCase()
+                      checkIfApplied("productColors", item)
                         ? styles.change_bg
                         : ""
                     }`}
                   >
                     {item}
                   </button>
-                </Link>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
+
+          {showGenderFilter ? (
+            <div className={styles.filters}>
+              <div className={styles.filters_header_div}>
+                <p className={styles.filters_header}>Gender</p>
+                <button className={styles.dropdown}>
+                  <IoIosArrowDropdown />
+                </button>
+              </div>
+              <div className={styles.filter_options}>
+                {data.gender.map((item, index) => {
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      value={item}
+                      onClick={() => handleGenderFilter(item)}
+                      className={`${
+                        filterState.selectedGender === item.toUpperCase()
+                          ? styles.change_bg
+                          : ""
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
 
           <div className={styles.filters}>
             <div className={styles.filters_header_div}>
@@ -179,25 +230,29 @@ const Filter = () => {
                 <IoIosArrowDropdown />
               </button>
             </div>
-            {data.price.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  value={getArrayFromString(item)}
-                  onClick={(e) => selectFilterHandler(e)}
-                  className={`${
-                    checkIfPriceApplied(
-                      item.split(" - ").map((x) => x.slice(1))
-                    )
-                      ? styles.change_bg
-                      : ""
-                  }`}
-                >
-                  {item}
-                </button>
-              );
-            })}
+            <div className={styles.filter_options}>
+              {data.price.map((item, index) => {
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    value={getArrayFromString(item)}
+                    onClick={() =>
+                      handlePriceFilter(`${getArrayFromString(item)}`)
+                    }
+                    className={`${
+                      checkIfPriceApplied(
+                        item.split(" - ").map((x) => x.slice(1))
+                      )
+                        ? styles.change_bg
+                        : ""
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div className={styles.filters}>
@@ -210,21 +265,22 @@ const Filter = () => {
                 <IoIosArrowDropdown />
               </button>
             </div>
-            {data.sizes.menSize.map((item, index) => {
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  value={item}
-                  onClick={(e) => selectFilterHandler(e)}
-                  className={`${
-                    checkIfApplied("productSize", item) ? styles.change_bg : ""
-                  }`}
-                >
-                  {item}
-                </button>
-              );
-            })}
+            <div className={styles.filter_options}>
+              {data.sizes.menSize.map((item, index) => {
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    value={item}
+                    className={`${
+                      checkIfApplied("productSize", item) ? styles.change_bg : ""
+                    }`}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </article>
       </aside>

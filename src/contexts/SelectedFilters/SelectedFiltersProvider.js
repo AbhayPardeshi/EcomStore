@@ -11,9 +11,11 @@ const SelectedFiltersProvider = ({ children }) => {
 
   const addAppliedFilters = (filterName) => {
     setAppliedFilters((previous) => {
-      if (!previous.includes((item) => item === filterName)) {
+      if (!previous.includes(filterName)) {
         return [...previous, filterName];
       }
+
+      return previous;
     });
   };
   const removeAppliedFilters = (filterName) => {

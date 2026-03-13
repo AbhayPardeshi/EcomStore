@@ -1,13 +1,18 @@
 .filter_section {
   width: 100%;
+  max-width: 220px;
 }
 
 .filter_article {
-  border: 1px solid black;
-  padding: 0.5rem 0.2rem;
-  margin-left: 0.1rem;
-  margin-right: 1rem;
   width: 100%;
+  padding: 0.65rem;
+  border: 1px solid rgba(22, 33, 31, 0.1);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top right, rgba(217, 107, 43, 0.12), transparent 30%),
+    rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 48px rgba(34, 31, 26, 0.08);
 }
 
 .filter_section p {
@@ -17,53 +22,160 @@
 .main_header_div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  align-items: start;
+  margin-bottom: 0.5rem;
+}
+
+.main_eyebrow {
+  margin-bottom: 0.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d96b2b;
 }
 
 .main_header {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #16211f;
+}
+
+.main_subtitle {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+  color: #63706d;
+  line-height: 1.25;
+}
+
+.main_clear {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid rgba(22, 33, 31, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #16211f;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.main_clear:hover {
+  transform: translateY(-1px);
+  background: #fff3eb;
+}
+
+.filter_status {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 14px;
+  background: rgba(22, 33, 31, 0.06);
+  color: #4f5a57;
+  font-size: 0.74rem;
 }
 
 .filters {
-  border: 0.1rem rgb(232, 224, 224) ridge;
-  margin: 0.2rem 0rem;
+  margin: 0.35rem 0;
+  border: 1px solid rgba(22, 33, 31, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  overflow: hidden;
 }
 
 .filters_header_div {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(211, 207, 207);
-  padding: 0.5rem;
-}
-.main_clear {
-  cursor: pointer;
-}
-.filters button {
-  gap: 0.1rem;
-  padding: 0.5rem 0.5rem;
-  border: 0.1rem rgb(206, 202, 202) solid;
-  border-radius: 10%;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  margin: 0.2rem;
-  text-transform: capitalize;
+  align-items: center;
+  padding: 0.55rem 0.7rem 0.4rem;
+  background: linear-gradient(180deg, rgba(248, 243, 236, 0.9), rgba(255, 255, 255, 0.95));
 }
 
 .filters_header {
-  font-size: 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #16211f;
+}
+
+.filter_options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 0.7rem 0.6rem;
+}
+
+.filters button {
+  padding: 0.42rem 0.62rem;
+  border: 1px solid rgba(22, 33, 31, 0.1);
+  border-radius: 999px;
+  background: #ffffff;
+  color: #16211f;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+  text-transform: capitalize;
+  font-size: 0.82rem;
   font-weight: 500;
 }
 
-.filters .dropdown {
+.filters button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(217, 107, 43, 0.35);
+  box-shadow: 0 10px 24px rgba(34, 31, 26, 0.08);
+}
+
+.filters_header_div .dropdown {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
   padding: 0;
   margin: 0;
-  background: transparent;
   border: 0;
-  font-size: 1.25rem;
+  border-radius: 999px;
+  background: rgba(22, 33, 31, 0.06);
+  color: #16211f;
+  font-size: 0.95rem;
+  box-shadow: none;
+}
+
+.filter_link {
+  text-decoration: none;
 }
 
 .change_bg {
-  background-color: rgb(203, 58, 58);
-  color: white;
-  border: 0.1rem solid black;
+  background: linear-gradient(135deg, #d96b2b, #c24f2d);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 14px 28px rgba(217, 107, 43, 0.22);
+}
+
+@media (max-width: 720px) {
+  .filter_section {
+    max-width: none;
+  }
+
+  .filter_article {
+    padding: 1rem;
+  }
+
+  .main_header_div {
+    flex-direction: column;
+  }
+
+  .main_clear {
+    width: 100%;
+  }
+
+  .filter_status {
+    flex-direction: column;
+  }
 }

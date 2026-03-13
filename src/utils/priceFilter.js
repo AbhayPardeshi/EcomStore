@@ -5,9 +5,10 @@ export const priceFilter = (products, range) => {
       products.forEach((product) => {
         for (let i = 0; i < range.length; i++) {
           const value = range[i].split(",").map((x) => Number(x));
+          console.log("price",product.productPricing.originalPrice);
           if (
-            product.originalPrice >= value[0] &&
-            product.originalPrice <= value[1]
+            product.productPricing.originalPrice >= value[0] &&
+            product.productPricing.originalPrice <= value[1]
           ) {
             r.push(product);
           }

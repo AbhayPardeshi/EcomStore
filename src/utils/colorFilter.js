@@ -1,13 +1,10 @@
-export const colorFilter = (products, colors) => {
-  if (colors.length && products.length) {
-    const color = [];
-    for (let product of products) {
-      if (colors.includes(product.productColor.toUpperCase())) {
-        color.push(product);
-      }
-    }
-    return color;
-  } else {
-    return products;
-  }
+export const colorFilter = (products, selectedColors) => {
+  if (!selectedColors.length) return products;
+
+  return products.filter((product) =>
+    product.varients?.variantList?.some((variant) =>
+      selectedColors.includes(variant.color?.toUpperCase()),
+    ),
+  );
 };
+

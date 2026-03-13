@@ -1,5 +1,5 @@
 import { setBrand, setCategory, setColor, setPriceRange } from "../../utils";
-import { useFilter } from "./FilterProvider";
+
 const CATEGORY = "CATEGORY";
 const ADD_BRAND = "ADD_BRAND";
 const REMOVE_BRAND = "REMOVE_BRAND";
@@ -8,6 +8,8 @@ const ADD_COLOR = "ADD_COLOR";
 const REMOVE_COLOR = "REMOVE_COLOR";
 const ADD_PRICE_RANGE = "ADD_PRICE_RANGE";
 const REMOVE_PRICE_RANGE = "REMOVE_PRICE_RANGE";
+const SET_GENDER = "SET_GENDER";
+const CLEAR_GENDER = "CLEAR_GENDER";
 
 export const filterReducer = (state, action) => {
   const { type, payload } = action;
@@ -20,19 +22,25 @@ export const filterReducer = (state, action) => {
         productColors: [],
         productPriceRanges: [],
         productSize: [],
+        selectedGender: "",
       };
+
     case CATEGORY:
       return setCategory(state, payload);
+
     case ADD_BRAND:
       return setBrand(state, payload);
+
     case REMOVE_BRAND:
       const brands = state.brandName.filter((name) => name !== payload);
       return {
         ...state,
         brandName: [...brands],
       };
+
     case ADD_COLOR:
       return setColor(state, payload);
+
     case REMOVE_COLOR:
       const colors = state.productColors.filter((name) => name !== payload);
       return {
@@ -42,6 +50,7 @@ export const filterReducer = (state, action) => {
 
     case ADD_PRICE_RANGE:
       return setPriceRange(state, payload);
+
     case REMOVE_PRICE_RANGE:
       const priceRange = state.productPriceRanges.filter(
         (name) => name !== payload
@@ -50,6 +59,18 @@ export const filterReducer = (state, action) => {
       return {
         ...state,
         productPriceRanges: [...priceRange],
+      };
+
+    case SET_GENDER:
+      return {
+        ...state,
+        selectedGender: payload,
+      };
+      
+    case CLEAR_GENDER:
+      return {
+        ...state,
+        selectedGender: "",
       };
 
     default:
