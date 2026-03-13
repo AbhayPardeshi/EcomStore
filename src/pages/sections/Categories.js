@@ -3,19 +3,12 @@ import styles from "./category.module.css";
 import Filter from "../../components/filter/Filter";
 import DisplayMultipleItems from "../../components/display-multipe-items/DisplayMultipleItems";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useFilter } from "../../contexts/filter/FilterProvider";
-import { applyCategoryFilter } from "../../utils";
-import { useFetch } from "../../services";
 import { data } from "./CategoryImages";
 
 export const Categories = () => {
   const params = useParams();
-  const { filterDispatch } = useFilter();
   const categoryName = params.id;
-  useEffect(() => {
-    applyCategoryFilter(filterDispatch, categoryName);
-  }, [params]);
+
   const filteredData = data.filter(
     (item) => item.category === categoryName.toUpperCase()
   );
