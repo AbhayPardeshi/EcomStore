@@ -1,36 +1,35 @@
 import React from "react";
 import shoeData from "./shoeData";
-import Carousel from "react-elastic-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import styles from "./recommended.module.css";
 
-const breakPoints = [
-  {
-    width: 1,
-    itemsToShow: 1,
-  },
-  {
-    width: 550,
-    itemsToShow: 2,
-  },
-  {
-    width: 768,
-    itemsToShow: 3,
-  },
-  {
-    width: 1124,
-    itemsToShow: 4,
-  },
-];
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    { breakpoint: 1124, settings: { slidesToShow: 4 } },
+    { breakpoint: 768, settings: { slidesToShow: 3 } },
+    { breakpoint: 550, settings: { slidesToShow: 2 } },
+    { breakpoint: 0, settings: { slidesToShow: 1 } },
+  ],
+};
 
 export const ImageContainer = () => {
-
   return (
     <>
-      <Carousel breakPoints={breakPoints}>
+      <Slider {...settings}>
         {shoeData.map((shoe) => {
           return (
-            <div className={styles.recommendedItem_section_singleItem}>
-              <article key={shoe.id}>
+            <div
+              className={styles.recommendedItem_section_singleItem}
+              key={shoe.id}
+            >
+              <article>
                 <a href="#">
                   <img src={shoe.image} alt={shoe.name} />
                   <div className={styles.shoe_info}>
@@ -52,7 +51,7 @@ export const ImageContainer = () => {
             </div>
           );
         })}
-      </Carousel>
+      </Slider>
     </>
   );
 };

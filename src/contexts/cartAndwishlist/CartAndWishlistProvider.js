@@ -11,6 +11,7 @@ const initialApiData = {
   apiURL: "",
   method: "GET",
   postMethodData: {},
+  encodedToken: "",
 };
 
 const CartAndWishlistContext = createContext(initialApiData);
@@ -40,13 +41,15 @@ export const CartAndWishlistProvider = ({ children }) => {
 
   useEffect(() => {
     let setTimeOutId;
+    // clear this - for the timebeing - to avoid multiple api calls when user logs in and cart and wishlist products are being fetched
+  
     if (!isUserLoggedIn) {
-      cartAndWishlistDispatch({ type: "USER_NOT_LOGGEDIN" });
+      cartAndWishlistDispatch({ type: "USER_NOT_LOGGEDIN",  });
     } else {
       setTimeOutId = setTimeout(() => {
-        cartAndWishlistDispatch({ type: "GET_CART_PRODUCTS" });
+        cartAndWishlistDispatch({ type: "GET_CART_PRODUCTS", payload: { encodedToken } });
         setTimeOutId = setTimeout(() => {
-          cartAndWishlistDispatch({ type: "GET_WISHLIST_PRODUCTS" });
+          cartAndWishlistDispatch({ type: "GET_WISHLIST_PRODUCTS", payload: { encodedToken } });
         }, 0);
       }, 0);
     }

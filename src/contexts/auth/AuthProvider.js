@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import unsign from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../../services/Toast";
+import jwtDecode from "jwt-decode";
 const initialUserAuthState = {
   isUserLoggedIn: false,
   encodedToken: "",
@@ -46,7 +47,7 @@ const AuthProvider = ({ children }) => {
       setApiData((prev) => {
         return {
           ...prev,
-          apiURL: "/auth/signup",
+          apiURL: "/api/auth/signup",
           method: "POST",
           postMethodData: { ...signupFormData },
         };
@@ -59,7 +60,7 @@ const AuthProvider = ({ children }) => {
       setApiData((prev) => {
         return {
           ...prev,
-          apiURL: "/auth/login",
+          apiURL: "/api/auth/login",
           method: "POST",
           postMethodData: { ...loginFormData },
         };
@@ -82,10 +83,7 @@ const AuthProvider = ({ children }) => {
     setTimeOutId = setTimeout(() => {
       const encodedTokenTemp = localStorage.getItem("token");
       if (encodedTokenTemp) {
-        const decodedToken = unsign(
-          encodedTokenTemp,
-          process.env.REACT_APP_JWT_SECRET
-        );
+        const decodedToken = jwtDecode(encodedTokenTemp);
         userAuthDispatch({
           type: "LOGIN",
           payload: {
@@ -96,7 +94,7 @@ const AuthProvider = ({ children }) => {
         });
         Toast({
           type: "success",
-          msg: `Logged in as ${decodedToken[0].firstName} ${decodedToken[0].lastName}`,
+          msg: `Logged in as ${decodedToken.firstName} ${decodedToken.lastName}`,
         });
       }
     });
@@ -105,19 +103,20 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (serverResponse || error) {
-      console.log(serverResponse);
+      console.log(serverResponse?.data);
       if (serverResponse?.status === 200) {
-        const token = serverResponse.data.encodedToken;
-        const decodeToken = unsign(token, process.env.USER_PWD_SECRET);
+        const token = serverResponse.data.accessToken;
+        const decodeToken = jwtDecode(token);
+        
         userAuthDispatch({
           type: "LOGIN",
-          payload: { encodedToken, user: decodeToken },
+          payload: { encodedToken: token, user: decodeToken },
         });
         localStorage.setItem("token", token);
-
+        console.log(decodeToken)
         Toast({
           type: "success",
-          msg: `Logged in as ${decodeToken[0].firstName} ${decodeToken[0].lastName}`,
+          msg: `Logged in as ${decodeToken.firstName} ${decodeToken.lastName}`,
         });
         navigate("/");
       } else if (serverResponse?.status === 201) {

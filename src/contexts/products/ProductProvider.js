@@ -20,7 +20,9 @@ const initialFilters = {
 };
 const ProductProvider = ({ children }) => {
   const [filters, setFilters] = useState(initialFilters);
-  const [apiURL, setApiURL] = useState("/products");
+  const [apiURL, setApiURL] = useState("/api/products");
+  // const [apiURL, setApiURL] = useState("");
+
   const { serverResponse, error, isLoading } = useFetch(apiURL);
 
   const [productsState, productsDispatch] = useReducer(
@@ -39,7 +41,7 @@ const ProductProvider = ({ children }) => {
       }
     }
   }, [serverResponse]);
-  console.log(productsState);
+
   useEffect(() => {
     for (let product of productsState.productList) {
       setFilters((prev) => ({

@@ -4,7 +4,7 @@ const HeaderImage = () => {
   return (
     <>
       <div className={styles.hero}>
-        <div classname={styles.hero_image}>
+        <div className={styles.hero_image}>
           <img src="./assets/images/hero-image.webp" alt="heroImage" />
         </div>
       </div>

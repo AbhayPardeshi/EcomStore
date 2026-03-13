@@ -5,36 +5,38 @@ export const useFetch = (
   apiURL,
   method = "GET",
   postMethodData,
-  encodedToken
+  encodedToken,
 ) => {
   const [serverResponse, setServerResponse] = useState();
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState({});
-  const API_URL = `https://ecomm-backend-two.vercel.app` + apiURL;
+  const API_URL = `http://localhost:8181` + apiURL;
 
   const getData = async () => {
     try {
       setLoading(true);
       let serverResponse;
+      let token = encodedToken ? `Bearer ${encodedToken}` : null;
+
       switch (method) {
         case "GET":
           serverResponse = await axios.get(API_URL, {
             headers: {
-              authorization: encodedToken,
+              authorization: token,
             },
           });
           break;
         case "POST":
           serverResponse = await axios.post(API_URL, postMethodData, {
             headers: {
-              authorization: encodedToken,
+              authorization: token,
             },
           });
           break;
         case "DELETE":
           serverResponse = await axios.delete(API_URL, {
             headers: {
-              authorization: encodedToken,
+              authorization: token,
             },
           });
           break;

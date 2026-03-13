@@ -1,38 +1,38 @@
 import React from "react";
 import styles from "./trending.module.css";
-import Carousel from "react-elastic-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import trendingItems from "./trendingData";
 import Carousal from "../carousal/Carousal";
 
-const breakPoints = [
-  {
-    width: 1,
-    itemsToShow: 1,
-  },
-  {
-    width: 550,
-    itemsToShow: 2,
-  },
-  {
-    width: 768,
-    itemsToShow: 3,
-  },
-  {
-    width: 1124,
-    itemsToShow: 4,
-  },
-];
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    { breakpoint: 1124, settings: { slidesToShow: 4 } },
+    { breakpoint: 768, settings: { slidesToShow: 3 } },
+    { breakpoint: 550, settings: { slidesToShow: 2 } },
+    { breakpoint: 0, settings: { slidesToShow: 1 } },
+  ],
+};
 
 export const Trending = () => {
   return (
     <main className={styles.trendingItems_div}>
       {/* <Carousal /> */}
       <p id={styles.heading}>TRENDING IN SALE</p>
-      <Carousel breakPoints={breakPoints}>
+      <Slider {...settings}>
         {trendingItems.map((item) => {
           return (
-            <div className={styles.trendingItems_section_singleItem}>
-              <article key={item.id}>
+            <div
+              className={styles.trendingItems_section_singleItem}
+              key={item.id}
+            >
+              <article>
                 <a href="#">
                   <img src={item.image} alt={item.name} />
                   <div className={styles.trendingItem_info}>
@@ -57,7 +57,7 @@ export const Trending = () => {
             </div>
           );
         })}
-      </Carousel>
+      </Slider>
     </main>
   );
 };
