@@ -11,32 +11,32 @@ export const Adidas = () => {
 
         <div className={styles.adidas_grid}>
           <div className={styles.grid_items}>
-            <a href="#">
+            <a href="/">
               <img src="./assets/images/adidas1.webp" alt="adidas" />
             </a>
           </div>
           <div className={styles.grid_items}>
-            <a href="#">
+            <a href="/">
               <img src="./assets/images/adidas2.webp" alt="adidas" />
             </a>
           </div>
           <div className={styles.grid_items}>
-            <a href="#">
+            <a href="/">
               <img src="./assets/images/adidas3.webp" alt="adidas" />
             </a>
           </div>
           <div className={styles.grid_items}>
-            <a href="#">
+            <a href="/">
               <img src="./assets/images/adidas4.webp" alt="adidas" />
             </a>
           </div>
           <div className={styles.grid_items}>
-            <a href="#">
+            <a href="/">
               <img src="./assets/images/adidas5.webp" alt="adidas" />
             </a>
           </div>
           <div className={styles.grid_items}>
-            <a href="#">
+            <a href="/">
               <img src="./assets/images/adidas6.webp" alt="adidas" />
             </a>
           </div>

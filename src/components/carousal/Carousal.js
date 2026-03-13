@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./carousal.module.css";
 const items = [
   {
@@ -18,22 +18,21 @@ const items = [
 const Carousal = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [translateValue, setTranslateValue] = useState(0);
-  const [itemsCount, setItemsCount] = useState(items.length);
   const [slidesToShow, setSlidesToShow] = useState(3);
-  const [width, setWidth] = useState(window.innerWidth);
-
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-    if (width < 768) {
-      setSlidesToShow(1);
-    } else if (width < 1024) {
-      setSlidesToShow(2);
-    } else {
-      setSlidesToShow(3);
-    }
-  };
+  const itemsCount = items.length;
 
   React.useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      if (windowWidth < 768) {
+        setSlidesToShow(1);
+      } else if (windowWidth < 1024) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

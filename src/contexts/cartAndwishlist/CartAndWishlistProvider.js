@@ -54,7 +54,7 @@ export const CartAndWishlistProvider = ({ children }) => {
       }, 0);
     }
     return () => clearTimeout(setTimeOutId);
-  }, [isUserLoggedIn]);
+  }, [encodedToken, isUserLoggedIn]);
 
   useEffect(() => {
     if (serverResponse) {

@@ -12,7 +12,7 @@ const CartItem = ({ products }) => {
   return (
     <>
       <div class={styles.cart_item}>
-        <img src={imageUrl} />
+        <img src={imageUrl} alt={name} />
         <div>
           <p>{name}</p>
           <p>${originalPrice}</p>

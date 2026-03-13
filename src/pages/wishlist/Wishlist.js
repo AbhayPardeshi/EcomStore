@@ -2,7 +2,7 @@ import React from "react";
 import WishlistItem from "../../components/wishlist-item/WishlistItem";
 import styles from "./wishlist.module.css";
 import { AiOutlineClose } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Wishlist = () => {
   const navigate = useNavigate();

@@ -1,6 +1,5 @@
 import React from "react";
 import { useCartAndWishlist } from "../../contexts/cartAndwishlist/CartAndWishlistProvider";
-import { useFetch } from "../../services";
 import { CartHandlers } from "../../utils/cart/cartHandlers";
 import styles from "./wishlistItem.module.css";
 

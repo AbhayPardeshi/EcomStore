@@ -3,7 +3,6 @@ import { useContext, createContext } from "react";
 import { authReducer } from "./authReducer";
 import { useFetch } from "../../services";
 import { useEffect } from "react";
-import unsign from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Toast } from "../../services/Toast";
 import jwtDecode from "jwt-decode";
@@ -131,7 +130,7 @@ const AuthProvider = ({ children }) => {
         console.log(error?.status, error.message);
       }
     }
-  }, [serverResponse, error]);
+  }, [serverResponse, error, navigate]);
 
   return (
     <AuthContext.Provider

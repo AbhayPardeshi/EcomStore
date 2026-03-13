@@ -1,13 +1,11 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./navbar-links.module.css";
-import { useFilter } from "../../../contexts/filter/FilterProvider";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useSidebar } from "../../../contexts/sidebar/SidebarProvider";
 
 export const NavbarLinks = () => {
-  const navigate = useNavigate();
-  const { openSidebar, isSidebarOpen } = useSidebar();
+  const { openSidebar } = useSidebar();
   return (
     <>
       <div className="nav_links_div">
@@ -38,12 +36,12 @@ export const NavbarLinks = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={"#"} className={styles.link_btn}>
+            <NavLink to={"/"} className={styles.link_btn}>
               releases
             </NavLink>
           </li>
           <li>
-            <NavLink to={"#"} className={styles.link_btn}>
+            <NavLink to={"/"} className={styles.link_btn}>
               sales
             </NavLink>
           </li>

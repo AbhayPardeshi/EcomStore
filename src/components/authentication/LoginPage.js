@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./authentication.module.css";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/auth/AuthProvider";
 
@@ -21,6 +20,7 @@ const LoginPage = () => {
         <img
           className={styles.main_image}
           src="./assets/images/signup_image.jpg"
+          alt="Sneakers displayed on login page"
         />
 
         <article className={styles.login_article}>

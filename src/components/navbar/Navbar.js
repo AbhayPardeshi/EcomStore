@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/auth/AuthProvider";
 import { useSidebar } from "../../contexts/sidebar/SidebarProvider";
 import { NavbarActionButton } from "./navbar-action-button/NavbarActionButton";
 import { NavbarLinks } from "./navbar-links/NavbarLinks";
@@ -8,7 +7,6 @@ import styles from "./navbar.module.css";
 import { Sidebar } from "./sidebar/Sidebar";
 
 const Navbar = () => {
-  const { userAuthState } = useAuth();
   const { isSidebarOpen } = useSidebar();
   return (
     <>

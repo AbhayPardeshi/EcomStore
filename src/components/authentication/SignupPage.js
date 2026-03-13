@@ -24,6 +24,7 @@ const SignupPage = () => {
         <img
           className={styles.main_image}
           src="./assets/images/signup_image.jpg"
+          alt="Sneakers displayed on signup page"
         />
         <article className={styles.signup_article}>
           <div className={styles.signup_heading}>

@@ -19,28 +19,28 @@ export const Footer = () => {
         <div className={styles.footer_div1}>
           <ul>
             <li className={styles.footer_link}>
-              <a href="#">About Us</a>
+              <a href="/">About Us</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">Contact Us</a>
+              <a href="/">Contact Us</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">Careers</a>
+              <a href="/">Careers</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">Shipping</a>
+              <a href="/">Shipping</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">Returns and Exchanges</a>
+              <a href="/">Returns and Exchanges</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">AfterPay</a>
+              <a href="/">AfterPay</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">Terms and Conditions</a>
+              <a href="/">Terms and Conditions</a>
             </li>
             <li className={styles.footer_link}>
-              <a href="#">Privacy Policy</a>
+              <a href="/">Privacy Policy</a>
             </li>
           </ul>
         </div>
@@ -56,7 +56,7 @@ export const Footer = () => {
               exclusive deals, and content.
             </p>
             <p>
-              <a href="#">Subscribe or Update Profile</a>
+              <a href="/">Subscribe or Update Profile</a>
             </p>
           </div>
         </div>
@@ -77,19 +77,19 @@ export const Footer = () => {
         </div>
 
         <div className={styles.footer_socials}>
-          <a href="#">
+          <a href="https://twitter.com" target="_blank" rel="noreferrer">
             <img src="./assets/images/icons8-twitter.svg" alt="twitter" />
           </a>
 
-          <a href="#">
+          <a href="https://facebook.com" target="_blank" rel="noreferrer">
             <img src="./assets/images/icons8-facebook.svg" alt="facebook" />
           </a>
 
-          <a href="#">
+          <a href="https://instagram.com" target="_blank" rel="noreferrer">
             <img src="./assets/images/icons8-instagram.svg" alt="instagram" />
           </a>
 
-          <a href="#">
+          <a href="https://pinterest.com" target="_blank" rel="noreferrer">
             <img
               src="./assets/images/icons8-pinterest (1).svg"
               alt="pinterest"

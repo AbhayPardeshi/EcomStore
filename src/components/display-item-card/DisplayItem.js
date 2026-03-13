@@ -19,10 +19,7 @@ const DisplayItem = () => {
   const navigate = useNavigate();
   const {
     cartAndWishlistDispatch,
-    showCart,
     setShowCart,
-    showWishlist,
-    setShowWishlist,
     cartItems,
     wishlistItems,
   } = useCartAndWishlist();
@@ -51,9 +48,9 @@ const DisplayItem = () => {
         method: "GET",
       };
     });
-  }, [params]);
+  }, [id]);
 
-  const { isLoading, serverResponse, error } = useFetch(
+  const { isLoading, serverResponse } = useFetch(
     apiData.apiURL,
     apiData.method
   );
@@ -129,7 +126,7 @@ const DisplayItem = () => {
                     type="button"
                     value={size}
                     onClick={(e) => sizeChangeHandler(e)}
-                    className={`${shoeSize == size ? styles.change_bg : ""}`}
+                    className={`${shoeSize === size ? styles.change_bg : ""}`}
                   >
                     {size}
                   </button>

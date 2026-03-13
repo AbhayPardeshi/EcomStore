@@ -67,7 +67,7 @@ export const Sidebar = () => {
               </li>
               <li className={styles.links}>
                 <NavLink
-                  to={"#"}
+                  to={"/"}
                   onClick={closeSidebar}
                   className={styles.link_btn}
                 >
@@ -76,7 +76,7 @@ export const Sidebar = () => {
               </li>
               <li className={styles.links}>
                 <NavLink
-                  to={"#"}
+                  to={"/"}
                   onClick={closeSidebar}
                   className={styles.link_btn}
                 >
@@ -87,19 +87,19 @@ export const Sidebar = () => {
           </div>
 
           <div className={styles.sidebar_footer_div}>
-            <a href="#">
+            <a href="https://twitter.com" target="_blank" rel="noreferrer">
               <img src="./assets/images/icons8-twitter.svg" alt="twitter" />
             </a>
 
-            <a href="#">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer">
               <img src="./assets/images/icons8-facebook.svg" alt="facebook" />
             </a>
 
-            <a href="#">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer">
               <img src="./assets/images/icons8-instagram.svg" alt="instagram" />
             </a>
 
-            <a href="#">
+            <a href="https://pinterest.com" target="_blank" rel="noreferrer">
               <img
                 src="./assets/images/icons8-pinterest (1).svg"
                 alt="pinterest"

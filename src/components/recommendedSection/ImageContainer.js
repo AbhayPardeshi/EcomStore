@@ -30,7 +30,7 @@ export const ImageContainer = () => {
               key={shoe.id}
             >
               <article>
-                <a href="#">
+                <a href="/">
                   <img src={shoe.image} alt={shoe.name} />
                   <div className={styles.shoe_info}>
                     <div>
